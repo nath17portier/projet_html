@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+.flex{
+	display: flex;
+}
+
+.flex-center{
+	justify-content: center;
+}
+
+.flex-sa{
+	justify-content: space-around;
+}
+
+.flex-sb{
+	justify-content: space-between;
+}
+
+.flex-se{
+	justify-content: space-evenly;
+}
+
+.flex-aic{
+	align-items: center;
+}
+
+.flex-aifs{
+	align-items: flex-start;
+}
+
+.flex-aife{
+	align-items: flex-end;
+}
