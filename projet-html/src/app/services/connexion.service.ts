@@ -5,10 +5,12 @@ import { Socket } from 'ngx-socket-io';
   providedIn: 'root'
 })
 
-export class MultijoueurService {
+export class ConnexionService {
 
 	constructor(private socket : Socket) {}
 
-	
+	getSocket(){
+		return (this.socket);
+	}
 
 }
