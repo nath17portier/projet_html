@@ -14,7 +14,7 @@ export class MultijoueurMenuComponent implements OnInit {
   }
 
   onClick(){
-  	this.multijoueurService.test();
+  	console.log("test");
   }
 
 }
