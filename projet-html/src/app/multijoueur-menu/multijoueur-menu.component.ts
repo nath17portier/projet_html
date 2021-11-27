@@ -8,13 +8,20 @@ import { MultijoueurService } from '../services/multijoueur.service';
 })
 export class MultijoueurMenuComponent implements OnInit {
 
-  constructor(private multijoueurService : MultijoueurService) { }
+
+  constructor(private multijoueurService : MultijoueurService) { 
+
+  }
 
   ngOnInit(): void {
   }
 
-  onClick(){
-  	this.multijoueurService.test();
+  onGame1(){
+    this.multijoueurService.ConnectToGame1();
+  }
+
+  onGame2(){
+    this.multijoueurService.ConnectToGame2();
   }
 
 }

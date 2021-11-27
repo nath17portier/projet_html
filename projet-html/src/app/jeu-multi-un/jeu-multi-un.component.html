@@ -1,0 +1,17 @@
+<p>Bienvenue à {{roomId}}</p>
+
+<div id="WindowContainer" *ngIf="!ecranFin">
+	<div id="joueur1">
+		<button (click)="onPlayer1Scored()">{{players[0]}}</button>
+		<p>Score de joueur 1 : {{Score_Joueur_1}}</p>
+	</div>
+	<div id="joueur2">
+		<button (click)="onPlayer2Scored()">{{players[1]}}</button>
+		<p>Score de joueur 2 : {{Score_Joueur_2}}</p>
+	</div>
+</div>
+<div id="ecranFin" *ngIf="ecranFin">
+	<p>Le joueur {{winner}} a gagné</p>
+	<br>
+	<p>Vous allez être redirigé d'ici quelques secondes vers le menu principal ...</p>
+</div>

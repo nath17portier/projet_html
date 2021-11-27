@@ -12,6 +12,8 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { InscriptionMenuComponent } from './inscription-menu/inscription-menu.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MultijoueurMenuComponent } from './multijoueur-menu/multijoueur-menu.component';
+import { LobbyMultijoueurComponent } from './lobby-multijoueur/lobby-multijoueur.component';
+import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -23,6 +25,8 @@ const appRoutes: Routes = [
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , component: MultijoueurMenuComponent},
+  {path: 'multijoueur-lobby' , component: LobbyMultijoueurComponent},
+  {path: 'multijeu1', component: JeuMultiUnComponent},
   {path: '' , component: MainMenuComponent},
   {path: '**' , redirectTo: '/not-found'}
 ]
@@ -37,7 +41,9 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     FourOhFourComponent,
     InscriptionMenuComponent,
     MainMenuComponent,
-    MultijoueurMenuComponent
+    MultijoueurMenuComponent,
+    LobbyMultijoueurComponent,
+    JeuMultiUnComponent
   ],
   imports: [
     BrowserModule,
