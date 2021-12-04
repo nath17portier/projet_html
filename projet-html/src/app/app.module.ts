@@ -14,6 +14,7 @@ import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { InscriptionMenuComponent } from './inscription-menu/inscription-menu.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MultijoueurMenuComponent } from './multijoueur-menu/multijoueur-menu.component';
+import { MastermindComponent } from './jeux-solo/mastermind/mastermind.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   {path: 'main' , component: MainMenuComponent},
   {path: 'not-found' , component: FourOhFourComponent},
   {path: 'aventure' , component: AventureMenuComponent},
+  {path: 'aventure/mastermind' , component: MastermindComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , component: MultijoueurMenuComponent},
@@ -39,7 +41,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     FourOhFourComponent,
     InscriptionMenuComponent,
     MainMenuComponent,
-    MultijoueurMenuComponent
+    MultijoueurMenuComponent,
+    MastermindComponent
   ],
   imports: [
     BrowserModule,

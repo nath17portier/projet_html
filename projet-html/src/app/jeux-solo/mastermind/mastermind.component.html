@@ -1,0 +1,12 @@
+<div><span>{{code}}</span></div>
+<div *ngIf="!won">
+    <span *ngFor="let color of listeCouleurs">
+        <button (click)="getColor(color)">{{color}}</button>
+    </span>
+</div>
+<div>
+    <span *ngFor="let color of couleursChoisies">
+        <span>{{color}}</span>
+    </span>
+</div>
+<div *ngIf="won">Bravo vous avez gagné!</div>
