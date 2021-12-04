@@ -16,12 +16,17 @@ export class MultijoueurMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
+<<<<<<< HEAD
   onGame1(){
     this.multijoueurService.ConnectToGame1();
   }
 
   onGame2(){
     this.multijoueurService.ConnectToGame2();
+=======
+  onClick(){
+  	console.log("test");
+>>>>>>> main
   }
 
 }

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ConnexionService } from '../services/connexion.service';
+import { LocalStorageService } from '../services/localStorage.service';
 
 @Component({
   selector: 'app-connexion-menu',
@@ -7,9 +11,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionMenuComponent implements OnInit {
 
-  constructor() { }
+	public UserForm: FormGroup;
+
+  constructor(public formBuilder: FormBuilder, private connexionService:ConnexionService, private router:Router, private localStorage: LocalStorageService) {
+  	  	this.UserForm = this.formBuilder.group({
+	      name: [''],
+	      password: ['']
+	    }) 
+
+   }
 
   ngOnInit(): void {
+  	console.log(this.connexionService.getSocket());
+  }
+
+
+    //Connexion de l'utilisateur + ajout dynamique de 'not found' en cas d'identifiants invalides
+  onSubmit(){
+  	this.connexionService.signIn(this.UserForm.value).then((response) => {
+  		console.log(response);
+		if(response){
+			this.router.navigate(['/main']);
+		}
+	});
+	console.log("pas fini frro");
   }
 
 }
