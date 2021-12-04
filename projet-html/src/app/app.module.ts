@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { Routes, RouterModule } from "@angular/router";
@@ -43,7 +45,9 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
-    SocketIoModule.forRoot(socketConfig)
+    SocketIoModule.forRoot(socketConfig),
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
