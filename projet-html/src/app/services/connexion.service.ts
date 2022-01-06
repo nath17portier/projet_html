@@ -20,7 +20,7 @@ export class ConnexionService {
   }
 
 	getUser(){
-    return this.localStorageService.get('user');
+    return this.localStorageService.get('pseudo');
   }
 
   getAuth(){
@@ -36,7 +36,6 @@ export class ConnexionService {
     
     this.socket.emit("connectRequest",name,pass);
     this.socket.on("connectResult",(response:boolean)=>{
-    	console.log("a + ",response);
       if(response){
         this.localStorageService.set("isAuth",true);
         this.localStorageService.set("pseudo",name);

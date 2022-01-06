@@ -3,3 +3,55 @@
 	position: absolute;
 
 }
+
+#joueur1, #joueur2{
+	height: 100%;
+	width: 35%;
+}
+
+#colOperations{
+	width: 30%;
+	height: 100%;
+}
+
+#WindowContainer{
+	height: 90vh;
+}
+
+.operation{
+	height: 7%;
+	width: 100%;
+	font-size: calc(1vw + 1vh);
+}
+
+#scoreJ1{
+
+}
+
+#scoreJ2{
+		
+}
+
+.operationEnonce{
+	width: 60%;
+	height: 100%;
+}
+
+.trackerResultat{
+	width: 20%;
+	height: 100%;
+}
+
+.trackerResultat1{
+	background-image: url('../images/fleche_gauche.png');
+}
+
+.trackerResultat2{
+	background-image: url('../images/fleche_droite.png');
+}
+
+.trackerResultat1, .trackerResultat2{
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+}

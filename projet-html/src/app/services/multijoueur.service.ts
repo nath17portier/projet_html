@@ -14,6 +14,8 @@ export class MultijoueurService {
 	match = new Subject<any>();
 	roomId:string = "";
 	players:string[];
+	playerNames:string[];
+	tabOperations:any[]=[];
 
 	constructor(private connexionService : ConnexionService, private router : Router) {
 
@@ -23,17 +25,17 @@ export class MultijoueurService {
 
 
 	ConnectToGame1(){
-		console.log(this.mySocket.ioSocket.id);
-		this.mySocket.emit("jeu1");
+		this.mySocket.emit("jeu1", this.connexionService.getUser());
 		this.mySocket.on("AddedToGame1",() =>{
 			this.router.navigate(["/multijoueur-lobby"]);
 		});
-		this.mySocket.on("roomReady1", (roomId:string, players:string[]) =>{
+		this.mySocket.on("roomReady1", (roomId:string, players:string[], playerNames:string[], tabOperations:any[]) =>{
 			this.match.next(true);
 			this.roomId = roomId ;
 			this.players = players;
+			this.playerNames = playerNames;
+			this.tabOperations = tabOperations;
 			setTimeout(()=>{
-				console.log(players);
 				
 				this.router.navigate(["/multijeu1"]);
 			},2000);
@@ -41,10 +43,8 @@ export class MultijoueurService {
 	}
 
 	ConnectToGame2(){
-		console.log(this.mySocket.ioSocket.id);
 		this.mySocket.emit("jeu2");
 		this.mySocket.on("AddedToGame2",() =>{
-			console.log("AddedToGame2");
 			this.router.navigate(["/multijoueur-lobby"]);
 		});
 	}
@@ -62,7 +62,20 @@ export class MultijoueurService {
 		return this.players;
 	}
 
+	getPlayerNames(){
+		return this.playerNames;
+	}
+
+	getTabOperations(){
+		return this.tabOperations;
+	}
+
 	endGame(roomId:string,victory:boolean,gameNumber:number){
+		
+		this.match.next(false);
+		this.match.complete();
+		this.players = [];
+		this.playerNames = [];
 		if(victory){
 			switch (gameNumber) {
 				case 1:
@@ -73,6 +86,7 @@ export class MultijoueurService {
 					break;
 			}
 		}
+		this.mySocket.emit("leaveRoom", this.roomId);
 		this.router.navigate(["/multijoueur"]);
 	}
 }

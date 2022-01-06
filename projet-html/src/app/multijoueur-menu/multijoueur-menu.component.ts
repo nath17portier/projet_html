@@ -8,6 +8,8 @@ import { MultijoueurService } from '../services/multijoueur.service';
 })
 export class MultijoueurMenuComponent implements OnInit {
 
+  canUse:boolean  = true;
+
 
   constructor(private multijoueurService : MultijoueurService) { 
 
@@ -16,17 +18,15 @@ export class MultijoueurMenuComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
   onGame1(){
+    this.canUse  = false;
     this.multijoueurService.ConnectToGame1();
   }
 
   onGame2(){
+    this.canUse  = false;
     this.multijoueurService.ConnectToGame2();
-=======
-  onClick(){
-  	console.log("test");
->>>>>>> main
-  }
+
+   }
 
 }

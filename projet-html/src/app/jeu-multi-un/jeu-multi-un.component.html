@@ -1,13 +1,20 @@
-<p>Bienvenue à {{roomId}}</p>
-
-<div id="WindowContainer" *ngIf="!ecranFin">
-	<div id="joueur1">
-		<button (click)="onPlayer1Scored()">{{players[0]}}</button>
+<div id="WindowContainer" class="flex" *ngIf="!ecranFin">
+	<div id="joueur1" class="flex flex-aic flex-center flex-col">
 		<p>Score de joueur 1 : {{Score_Joueur_1}}</p>
+		<!-- <button [disabled]="!joueur1" (click)="onPlayer1Scored()">{{playerNames[0]}}</button> -->
+		<input  [disabled]="!joueur1" id="input_joueur1" type="number" (change)="updateResponse1()">
 	</div>
-	<div id="joueur2">
-		<button (click)="onPlayer2Scored()">{{players[1]}}</button>
+	<div id="colOperations" class="flex flex-aic flex-center flex-col" >
+		<div class="operation flex flex-aic flex-center" *ngFor="let op of tabOperations; let i=index">
+			<div id="scoreJ1" class="trackerResultat flex flex-aic flex-center" [ngClass]="{'trackerResultat1':i==Score_Joueur_1}"></div>
+			<div class="operationEnonce flex flex-aic flex-center">{{op.operation}}</div>
+			<div id="scoreJ2" class="trackerResultat flex flex-aic flex-center" [ngClass]="{'trackerResultat2':i==Score_Joueur_2}"></div>
+		</div>
+	</div>
+	<div id="joueur2" class="flex flex-aic flex-center flex-col">
 		<p>Score de joueur 2 : {{Score_Joueur_2}}</p>
+		<!-- <button [disabled]="!joueur2" (click)="onPlayer2Scored()">{{playerNames[1]}}</button> -->
+		<input  [disabled]="!joueur2" id="input_joueur2" type="number" (change)="updateResponse2()">
 	</div>
 </div>
 <div id="ecranFin" *ngIf="ecranFin">
@@ -15,3 +22,5 @@
 	<br>
 	<p>Vous allez être redirigé d'ici quelques secondes vers le menu principal ...</p>
 </div>
+
+<!-- [ngClass]="{'trackerResultat':i==Score_Joueur_1}" -->
