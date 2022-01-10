@@ -16,6 +16,7 @@ import { MainMenuComponent } from './main-menu/main-menu.component';
 import { MultijoueurMenuComponent } from './multijoueur-menu/multijoueur-menu.component';
 import { LobbyMultijoueurComponent } from './lobby-multijoueur/lobby-multijoueur.component';
 import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
+import { PicrossComponent } from './picross/picross.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   {path: 'main' , component: MainMenuComponent},
   {path: 'not-found' , component: FourOhFourComponent},
   {path: 'aventure' , component: AventureMenuComponent},
+  {path: 'aventure/picross' , component: PicrossComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , component: MultijoueurMenuComponent},
@@ -45,7 +47,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     MainMenuComponent,
     MultijoueurMenuComponent,
     LobbyMultijoueurComponent,
-    JeuMultiUnComponent
+    JeuMultiUnComponent,
+    PicrossComponent
   ],
   imports: [
     BrowserModule,

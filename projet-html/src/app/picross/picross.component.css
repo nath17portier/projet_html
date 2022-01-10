@@ -1,0 +1,100 @@
+#picross_canvas{
+	height: 80vh;
+	width: 80vh;
+}
+
+#ligne1{
+	height: 20vh;
+}
+
+#ligne2{
+	height: 80vh;
+}
+
+#colonnes_consigne{
+	width: 80vh;
+}
+
+#zone_blanche{
+	width: 20vh;
+	border-bottom: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid transparent;
+}
+
+#container{
+	height: 90vh;
+	width: 90vw;
+}
+
+/*.ligne{
+	height: 12vh;
+}*/
+
+.ligne_consigne{
+	width: 20vh;
+}
+
+.ligne_case{
+	width: 80vh;
+}
+
+/*.case{
+	width: 12vh;
+}
+
+.colonne_consigne{
+	width: 12vh;
+}*/
+
+
+.case, .ligne_consigne, .colonne_consigne{
+	border:1px solid;
+}
+
+.number{
+	margin: 0px 3px 0px 3px;
+}
+
+.croix{
+	background-color: red;
+}
+
+.black{
+	background-color: black;
+}
+
+.termine{
+	background-color: yellow;
+}
+
+.taille_5_width{
+	width: 12vh;
+}
+
+.taille_10_width{
+	width: 6vh;
+}
+
+.taille_15_width{
+	width: 4vh;
+}
+
+.taille_5_height{
+	height: 12vh;
+}
+
+.taille_10_height{
+	height: 6vh;
+}
+
+.taille_15_height{
+	height: 4vh;
+}
+
+#finNiveau{
+	position: absolute;
+	bottom: 1%;
+	width: 50%;
+	left: 25%;
+}

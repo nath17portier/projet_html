@@ -1,0 +1,40 @@
+<div *ngIf="dataLoaded">
+	
+	<div id="container" class="flex flex-aic flex-center">
+		<div id="picross_canvas" class="flex flex-col">
+			<div id="ligne1" class="flex">
+				<div id="zone_blanche"></div>
+				<div id="colonnes_consigne" class="flex">
+					<div *ngFor="let item of [].constructor(taille); let j = index" [id]="'colonne_'+j" 
+					 [ngClass]=" {'taille_5_width' : taille==5, 'taille_10_width' : taille==10, 'taille_15_width' : taille==15}" class="colonne_consigne flex flex-center flex-aic flex-col">
+						<div *ngFor="let number of colonnes[j]" class="number">{{number}}</div>
+					</div>
+				</div>
+			</div>
+			<div id="ligne2" class="flex flex-col">
+				<div *ngFor="let item of [].constructor(taille); let i = index" class="ligne flex" [ngClass]=" {'taille_5_height' : taille==5, 'taille_10_height' : taille==10, 'taille_15_height' : taille==15}">
+					<div [id]="'ligne_'+i" class="ligne_consigne flex flex-center flex-aic">
+						<div *ngFor="let number of lignes[i]" class="number">{{number}}</div>
+					</div>
+					<div class="ligne_case flex" >
+						<div [id]="'case_'+i+'_'+j" *ngFor="let item of [].constructor(taille); let j = index" class="case flex flex-center flex-aic" 
+						 [ngClass]=" {'taille_5_width' : taille==5, 'taille_10_width' : taille==10, 'taille_15_width' : taille==15}" (click)="onStateChange(i,j)"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div *ngIf="!dataLoaded">
+	<div>Choisissez un niveau de difficulté</div>
+	<button (click)="onLoadData(0)">Facile</button>
+	<button (click)="onLoadData(1)">Moyen</button>
+	<button (click)="onLoadData(2)">Difficile</button>
+</div>
+
+<div id="finNiveau" class="flex flex-sa flex-aic">
+	<p *ngIf="gameWon" id="paragFinNiveau">Felicitation, vous avez gagné !</p>
+	<button *ngIf="gameWon" id="btnFinNiveau" (click)="onRetourMenu()">Retour au menu</button>
+</div>
