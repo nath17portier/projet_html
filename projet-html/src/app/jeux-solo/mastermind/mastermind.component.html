@@ -1,12 +1,62 @@
-<div><span>{{code}}</span></div>
-<div *ngIf="!won">
-    <span *ngFor="let color of listeCouleurs">
-        <button (click)="getColor(color)">{{color}}</button>
-    </span>
-</div>
 <div>
-    <span *ngFor="let color of couleursChoisies">
-        <span>{{color}}</span>
-    </span>
+    <div *ngIf="!won && !lost">
+        <div class="flex">
+            <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color"></div>
+        </div>
+        <form class="flex flex-row" [formGroup]="formCouleurs" (ngSubmit)="onSubmit()">
+            <div class="flex flex-col flex-aic">
+                <div class="puce"></div>
+                <select formControlName='couleur1'>
+                    <option value=""></option>
+                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
+                </select>
+            </div>
+            <div class="flex flex-col flex-aic">
+                <div class="puce"></div>
+                <select formControlName='couleur2'>
+                    <option value=""></option>
+                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
+                </select>
+            </div>
+            <div class="flex flex-col flex-aic">
+                <div class="puce"></div>
+                <select formControlName='couleur3'>
+                    <option value=""></option>
+                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
+                </select>
+            </div>
+            <div class="flex flex-col flex-aic">
+                <div class="puce"></div>
+                <select formControlName='couleur4'>
+                    <option value=""></option>
+                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
+                </select>
+            </div>
+            <button type="submit" [disabled]="!formCouleurs.valid">Submit</button>
+        </form>
+    </div>
+    <div id="container" class="flex flex-center flex-aic">
+        <div class="flex flex-col flex-aifs colonne">
+            <div *ngFor="let code of listeTentatives">
+                <div class="flex">
+                    <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col flex-aifs flex-se colonne">
+            <div *ngFor="let result of listeResultats">
+                <div class="flex">
+                    <div class="puce" *ngFor="let r of result" [ngClass]="r"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="won">Bravo vous avez gagné!</div>
+    <div *ngIf="lost">Vous avez perdu..
+        <div>la réponse était:</div>
+        <div class="flex">
+            <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
+        </div>
+    </div>
 </div>
-<div *ngIf="won">Bravo vous avez gagné!</div>

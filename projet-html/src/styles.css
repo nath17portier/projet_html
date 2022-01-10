@@ -30,3 +30,11 @@
 .flex-aife{
 	align-items: flex-end;
 }
+
+.flex-col{
+	flex-direction: column;
+}
+
+.flex-row{
+	flex-direction: row;
+}

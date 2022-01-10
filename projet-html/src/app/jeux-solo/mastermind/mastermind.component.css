@@ -1,0 +1,50 @@
+#container {
+    width: 70vw;
+}
+
+.colonne {
+    width: 50%;
+}
+
+.puce {
+    border-radius: 100%;
+    border: solid 1px black;
+    width: 30px;
+    height: 30px;
+}
+
+.yellow {
+    background-color: #FFDB58;
+}
+
+.blue {
+    background-color: royalblue;
+}
+
+.red {
+    background-color: #E42217;
+}
+
+.green {
+    background-color: #4CC417;
+}
+
+.pink {
+    background-color: #F778A1;
+}
+
+.purple {
+    background-color: #A74AC7;
+}
+
+.ColorOkPlaceOk {
+    background-color: black;
+}
+
+.ColorOkPlacePOk {
+    background-color: grey;
+}
+
+.None {
+    border: white;
+}
