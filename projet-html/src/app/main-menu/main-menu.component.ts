@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConnexionService } from '../services/connexion.service';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private connexionService: ConnexionService) { }
 
   ngOnInit(): void {
+  }
+
+
+  onDeconnexion(){
+  	this.connexionService.signOut();
   }
 
 }

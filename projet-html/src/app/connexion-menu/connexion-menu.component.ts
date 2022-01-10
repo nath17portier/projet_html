@@ -22,19 +22,17 @@ export class ConnexionMenuComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  	console.log(this.connexionService.getSocket());
+    console.log(this.connexionService.getAuth());
   }
 
 
     //Connexion de l'utilisateur + ajout dynamique de 'not found' en cas d'identifiants invalides
   onSubmit(){
   	this.connexionService.signIn(this.UserForm.value).then((response) => {
-  		console.log(response);
 		if(response){
 			this.router.navigate(['/main']);
 		}
 	});
-	console.log("pas fini frro");
   }
 
 }
