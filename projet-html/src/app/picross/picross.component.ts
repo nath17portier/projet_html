@@ -8,13 +8,7 @@ import { Router } from "@angular/router";
   styleUrls: ['./picross.component.css']
 })
 export class PicrossComponent implements OnInit {
-  /*
-	[1,0,1,0,0,1,1,1,0,0,1,1,1,0,1,0,1,1,1,1,0,1,1,1,0];	
-	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-	5
-	[[1,1],[3],[3,1],[4],[3]];
-	[[3],[4],[5],[2],[2]];
-  */
+
   solution:any;
   state:any;	 
 

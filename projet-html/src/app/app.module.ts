@@ -17,21 +17,22 @@ import { MultijoueurMenuComponent } from './multijoueur-menu/multijoueur-menu.co
 import { LobbyMultijoueurComponent } from './lobby-multijoueur/lobby-multijoueur.component';
 import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
 import { PicrossComponent } from './picross/picross.component';
+import { AuthGuardService } from './services/authGuard.service';
 
 
 //Chemins d'accès connus par le routeur Angular
 
 const appRoutes: Routes = [
-  {path: 'main' , component: MainMenuComponent},
+  {path: 'main' , canActivate: [AuthGuardService] , component: MainMenuComponent},
   {path: 'not-found' , component: FourOhFourComponent},
-  {path: 'aventure' , component: AventureMenuComponent},
-  {path: 'aventure/picross' , component: PicrossComponent},
+  {path: 'aventure' , canActivate: [AuthGuardService] , component: AventureMenuComponent},
+  {path: 'aventure/picross' , canActivate: [AuthGuardService] , component: PicrossComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
-  {path: 'multijoueur' , component: MultijoueurMenuComponent},
-  {path: 'multijoueur-lobby' , component: LobbyMultijoueurComponent},
-  {path: 'multijeu1', component: JeuMultiUnComponent},
-  {path: '' , component: MainMenuComponent},
+  {path: 'multijoueur' , canActivate: [AuthGuardService] , component: MultijoueurMenuComponent},
+  {path: 'multijoueur-lobby' , canActivate: [AuthGuardService] , component: LobbyMultijoueurComponent},
+  {path: 'multijeu1' , canActivate: [AuthGuardService] , component: JeuMultiUnComponent},
+  {path: '' , component: ConnexionMenuComponent},
   {path: '**' , redirectTo: '/not-found'}
 ]
 
