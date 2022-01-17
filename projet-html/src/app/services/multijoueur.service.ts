@@ -89,4 +89,8 @@ export class MultijoueurService {
 		this.mySocket.emit("leaveRoom", this.roomId);
 		this.router.navigate(["/multijoueur"]);
 	}
+
+	undoMatch(){
+		this.mySocket.emit("undoJeu1", this.connexionService.getUser());
+	}
 }

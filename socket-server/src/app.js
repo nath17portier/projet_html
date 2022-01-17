@@ -51,6 +51,11 @@ io.on("connection", socket => {
 	  	
 	  })
 
+  socket.on("undoJeu1", () =>{
+	  	jeu1.splice(jeu1.length-1,1);
+	  	console.log(jeu1);
+	  })
+
   socket.on("jeu2", () =>{
 	  	console.log("Jeu 2");
 	  	socket.emit("AddedToGame2");
@@ -119,6 +124,16 @@ io.on("connection", socket => {
 
 	  	
 	  })
+
+  socket.on("disconnecting",()=>{
+  	console.log(socket.id);
+  	console.log(jeu1[jeu1.length-1].players.length)
+  	console.log(jeu1[jeu1.length-1].players[0])
+	if(jeu1[jeu1.length-1].players.length == 1 && jeu1[jeu1.length-1].players[0] == socket.id){
+		jeu1.splice(jeu1.length-1,1)
+	}
+	console.log(jeu1);
+  })
 
   socket.on("leaveRoom", (roomId) =>{
   	socket.leave(roomId);

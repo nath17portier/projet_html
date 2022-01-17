@@ -1,2 +1,3 @@
 <p *ngIf="!match">waiting for another player ...</p>
 <p *ngIf="match">Player found ! Teleporting to game soon :)</p>
+<button onbeforeunload="return onBeforeUnload()" id="btnRetour" (click)="onRetourMenu()">Retour au menu</button>

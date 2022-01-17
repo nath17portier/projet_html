@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MultijoueurService } from '../services/multijoueur.service';
 import { Observable, Subscription } from "rxjs";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-lobby-multijoueur',
@@ -12,9 +13,18 @@ export class LobbyMultijoueurComponent implements OnInit {
 	match:boolean = false;
   sub: Subscription;
 
-  constructor(private multijoueurService : MultijoueurService) { }
+  constructor(private multijoueurService : MultijoueurService, private router: Router) { }
 
   ngOnInit(): void {
+      var multi = this.multijoueurService;
+
+      window.addEventListener("popstate", function(event){
+        var r = confirm("a");
+        if(r==true){
+          multi.undoMatch();
+        }
+      })
+      
 
   	 this.sub = this.multijoueurService.getMatch().subscribe(
   		(m: any) =>{
@@ -27,5 +37,12 @@ export class LobbyMultijoueurComponent implements OnInit {
   ngOnDestroy(): void{
     this.sub.unsubscribe();
   }
+
+  onRetourMenu(){
+    
+    this.multijoueurService.undoMatch();
+    this.router.navigate(['/multijoueur']);
+  }
+
 
 }
