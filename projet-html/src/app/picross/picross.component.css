@@ -98,3 +98,9 @@
 	width: 50%;
 	left: 25%;
 }
+
+#btnRetour{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}

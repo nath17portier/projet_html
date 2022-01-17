@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PicrossService } from "../services/picross.service";
+import { LocalStorageService } from '../services/localStorage.service';
 import { Router } from "@angular/router";
+import { ConnexionService } from '../services/connexion.service';
 
 @Component({
   selector: 'app-picross',
@@ -21,12 +23,16 @@ export class PicrossComponent implements OnInit {
 
   dataLoaded: boolean = false;
 
-  constructor(private picrossService: PicrossService, private router: Router) { }
+  lvlMax:number;
+  difficulte:number;
+
+  niveau:number = 2;
+
+  constructor(private connexionService : ConnexionService,private picrossService: PicrossService, private router: Router, private localStorageService : LocalStorageService) { }
 
   ngOnInit(): void {
-
-  	
-
+  	this.lvlMax = this.localStorageService.get("lvlPicross");
+  	console.log(this.lvlMax);
   }
 
   onStateChange(i:number, j:number){
@@ -120,6 +126,14 @@ export class PicrossComponent implements OnInit {
 
   		}
   	}
+  	console.log(this.lvlMax,this.difficulte)
+  	if(this.lvlMax==this.difficulte && this.lvlMax!=3){
+  		console.log("on a fait le lvl max");
+  		this.picrossService.lvlUpPicross(this.lvlMax)
+  	}
+  	if(this.localStorageService.get("lvlGeneral")==this.niveau){
+  		this.connexionService.lvlUpGeneral(this.niveau);
+  	}
   }
 
   liste_etat_to_draw(tab:any){
@@ -150,6 +164,7 @@ export class PicrossComponent implements OnInit {
 	}
 
   onLoadData(difficulte:number){
+  	this.difficulte = difficulte+1;
   	switch (difficulte) {
   		case 0:
   			var data = this.picrossService.getPicrossLVL1();

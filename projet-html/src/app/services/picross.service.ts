@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
+import { Socket } from 'ngx-socket-io';
+import { ConnexionService } from '../services/connexion.service';
+import { LocalStorageService } from '../services/localStorage.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class PicrossService {
+
+	mySocket:Socket;
 
 	picrossLVL1 = [{lignes:[[1,1],[3],[3,1],[4],[3]], colonnes: [[3],[4],[5],[2],[2]], solution: [1,0,1,0,0,1,1,1,0,0,1,1,1,0,1,0,1,1,1,1,0,1,1,1,0]},
 	{lignes:[[3],[1,2],[1,2],[1,1],[5]], colonnes: [[1,2],[1,1,1],[2,1],[3,1],[3]], solution: [0,1,1,1,0,1,0,1,1,0,0,1,0,1,1,1,0,0,0,1,1,1,1,1,1]}];
@@ -27,8 +33,8 @@ export class PicrossService {
 	 			1,1,0,0,0,0,0,1,0,1,0,0,0,1,1,
 	 			1,1,1,1,0,1,1,1,1,1,1,0,0,0,0]}];
 
-	constructor() {
-
+	constructor(private connexionService : ConnexionService, private localStorageService : LocalStorageService) {
+		this.mySocket = this.connexionService.getSocket();
 	}
 
 
@@ -70,5 +76,10 @@ export class PicrossService {
 			colonnes : this.picrossLVL3[i].colonnes,
 			solution : this.picrossLVL3[i].solution
 		}
+	}
+
+	lvlUpPicross(lvl:number){
+		this.localStorageService.set("lvlPicross",lvl+1)
+		this.mySocket.emit("lvlUpPicross", lvl, this.localStorageService.get("id"));
 	}
 }

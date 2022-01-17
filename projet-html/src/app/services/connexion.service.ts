@@ -35,10 +35,13 @@ export class ConnexionService {
     var pass = usr.password;
     
     this.socket.emit("connectRequest",name,pass);
-    this.socket.on("connectResult",(response:boolean)=>{
+    this.socket.on("connectResult",(response:boolean, lvlGeneral:number, lvlPicross:number, id:string)=>{
       if(response){
         this.localStorageService.set("isAuth",true);
         this.localStorageService.set("pseudo",name);
+        this.localStorageService.set("lvlGeneral",lvlGeneral);
+        this.localStorageService.set("lvlPicross",lvlPicross);
+        this.localStorageService.set("id",id);
         resolve(true);
       }
       else{
@@ -70,5 +73,10 @@ export class ConnexionService {
       })
   })
 }
+
+  lvlUpGeneral(lvl:number){
+    this.localStorageService.set("lvlGeneral",lvl+1)
+    this.socket.emit("lvlUpGeneral", lvl, this.localStorageService.get("id"));
+  }
 
 }

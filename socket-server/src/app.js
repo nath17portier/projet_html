@@ -79,9 +79,9 @@ io.on("connection", socket => {
 		  const dbo = db.db("mydb");
 		  dbo.collection("users").find({name:name, password:pass}).toArray(function(err, result) {
 		    if (err) throw err;
-		    console.log(result);
+		    console.log(result[0].lvlGeneral);
 		    if(result.length==1){
-		    	socket.emit("connectResult", true);
+		    	socket.emit("connectResult", true, result[0].lvlGeneral, result[0].lvlPicross, result[0].id);
 		    	console.log("connection accepted");
 		    }
 		    else{
@@ -103,7 +103,7 @@ io.on("connection", socket => {
 		    if (err) throw err;
 		    console.log(result);
 		    if(result.length==0){
-		    	dbo.collection("users").insertOne({name:name,password:pass},function(err,res){
+		    	dbo.collection("users").insertOne({name:name,password:pass, lvlGeneral:1, lvlPicross:1, id : uuidv4()},function(err,res){
 		    		if (err) throw err;
 		    		console.log("user inséré");
 		    		socket.emit("inscriptionResult", true);
@@ -122,6 +122,22 @@ io.on("connection", socket => {
 
   socket.on("leaveRoom", (roomId) =>{
   	socket.leave(roomId);
+  })
+
+  socket.on("lvlUpPicross", (lvl, userId)=>{
+  	MongoClient.connect(url, function(err, db) {
+	 	if (err) throw err;
+	  	const dbo = db.db("mydb");
+		dbo.collection("users").updateOne({id:userId},{$set:{lvlPicross:lvl+1}})
+  	});
+  })
+
+  socket.on("lvlUpGeneral", (lvl, userId)=>{
+  	MongoClient.connect(url, function(err, db) {
+	 	if (err) throw err;
+	  	const dbo = db.db("mydb");
+		dbo.collection("users").updateOne({id:userId},{$set:{lvlGeneral:lvl+1}})
+  	});
   })
 
 });
