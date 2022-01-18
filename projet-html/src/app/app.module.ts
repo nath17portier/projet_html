@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -50,7 +51,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     RouterModule.forRoot(appRoutes),
     SocketIoModule.forRoot(socketConfig),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

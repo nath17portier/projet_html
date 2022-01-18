@@ -1,36 +1,11 @@
 <div>
     <div *ngIf="!won && !lost">
         <div class="flex">
-            <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color"></div>
+            <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color" (click)="putColor(color)"></div>
         </div>
         <form class="flex flex-row" [formGroup]="formCouleurs" (ngSubmit)="onSubmit()">
-            <div class="flex flex-col flex-aic">
-                <div class="puce"></div>
-                <select formControlName='couleur1'>
-                    <option value=""></option>
-                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
-                </select>
-            </div>
-            <div class="flex flex-col flex-aic">
-                <div class="puce"></div>
-                <select formControlName='couleur2'>
-                    <option value=""></option>
-                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
-                </select>
-            </div>
-            <div class="flex flex-col flex-aic">
-                <div class="puce"></div>
-                <select formControlName='couleur3'>
-                    <option value=""></option>
-                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
-                </select>
-            </div>
-            <div class="flex flex-col flex-aic">
-                <div class="puce"></div>
-                <select formControlName='couleur4'>
-                    <option value=""></option>
-                    <option *ngFor="let color of listeCouleurs" [value]="color">{{color}}</option>
-                </select>
+            <div class="flex">
+                <div class="puce" *ngFor="let c of submittedCode;let i = index"  [ngClass]="c" (click)="removeColor(i)"></div>
             </div>
             <button type="submit" [disabled]="!formCouleurs.valid">Submit</button>
         </form>
@@ -59,4 +34,5 @@
             <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
         </div>
     </div>
+    <button *ngIf="won || lost" (click)="resetGame()">Rejouer</button>
 </div>
