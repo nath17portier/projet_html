@@ -18,6 +18,8 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@types/crypto-js": "^4.1.0",
+    "crypto-js": "^4.1.1",
     "ngx-socket-io": "^4.1.0",
     "rxjs": "~6.6.0",
     "rxjs-compat": "^6.6.7",

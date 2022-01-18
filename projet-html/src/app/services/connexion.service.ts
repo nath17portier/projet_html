@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { LocalStorageService } from '../services/localStorage.service';
+import * as CryptoJS from 'crypto-js';
 
 
 @Injectable({
@@ -33,8 +34,12 @@ export class ConnexionService {
       (resolve, reject) => {
     var name = usr.name;
     var pass = usr.password;
+
+    var passSafe = this.set("password", pass);
+
+    console.log(passSafe);
     
-    this.socket.emit("connectRequest",name,pass);
+    this.socket.emit("connectRequest",name,passSafe);
     this.socket.on("connectResult",(response:boolean, lvlGeneral:number, lvlPicross:number, id:string)=>{
       if(response){
         this.localStorageService.set("isAuth",true);
@@ -61,8 +66,12 @@ export class ConnexionService {
     console.log(user);
     var name = user.name;
     var pass = user.password;
+
+    var passSafe = this.set("password", pass);
+
+    console.log(passSafe);
     return new Promise<any>((resolve, reject) => {
-      this.socket.emit("inscription",name,pass);
+      this.socket.emit("inscription",name,passSafe);
       this.socket.on("inscriptionResult",(response:boolean)=>{
       	if(response){
       		resolve(true);
@@ -77,6 +86,20 @@ export class ConnexionService {
   lvlUpGeneral(lvl:number){
     this.localStorageService.set("lvlGeneral",lvl+1)
     this.socket.emit("lvlUpGeneral", lvl, this.localStorageService.get("id"));
+  }
+
+  set(keys:any, value:any){
+    var key = CryptoJS.enc.Utf8.parse(keys);
+    var iv = CryptoJS.enc.Utf8.parse(keys);
+    var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(value.toString()), key,
+    {
+        keySize: 128 / 8,
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+
+    return encrypted.toString();
   }
 
 }

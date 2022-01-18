@@ -84,7 +84,6 @@ io.on("connection", socket => {
 		  const dbo = db.db("mydb");
 		  dbo.collection("users").find({name:name, password:pass}).toArray(function(err, result) {
 		    if (err) throw err;
-		    console.log(result[0].lvlGeneral);
 		    if(result.length==1){
 		    	socket.emit("connectResult", true, result[0].lvlGeneral, result[0].lvlPicross, result[0].id);
 		    	console.log("connection accepted");
@@ -127,11 +126,12 @@ io.on("connection", socket => {
 
   socket.on("disconnecting",()=>{
   	console.log(socket.id);
-  	console.log(jeu1[jeu1.length-1].players.length)
-  	console.log(jeu1[jeu1.length-1].players[0])
-	if(jeu1[jeu1.length-1].players.length == 1 && jeu1[jeu1.length-1].players[0] == socket.id){
-		jeu1.splice(jeu1.length-1,1)
-	}
+  	if (jeu1[jeu1.length-1] != undefined) {
+  		if(jeu1[jeu1.length-1].players.length == 1 && jeu1[jeu1.length-1].players[0] == socket.id){
+			jeu1.splice(jeu1.length-1,1)
+		}
+  	}
+	
 	console.log(jeu1);
   })
 
