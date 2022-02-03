@@ -34,3 +34,51 @@
 .flex-aife{
 	align-items: flex-end;
 }
+
+body {
+	background-image: url('./app/images/background.jpg');
+	background-size:100%;
+	margin:0;
+}
+
+#globalContainer{
+	height: 100vh;
+	width: 100vw;
+}
+
+.btn-ui{
+	height: 75px;
+    width: 225px;
+    border-radius: 20px;
+    border: 4px solid black;
+    background-color: #4d4d4d;
+    color: #FFB74D;
+    font-size: calc(1.2vw + 1.2vh);
+    font-family: fantasy;
+    transition: all 0.5s;
+    margin: 15px; 
+}
+
+.btn-ui:hover{
+	color: red;
+	transition: all 0.5s;
+	transform: scale(1.2);
+	box-shadow: 0px 0px 30px 30px rgba(255,255,125,0.25);
+}
+
+.btn-ui:active {
+    transform: scale(1.3);
+    
+}
+
+
+#btnRetour{
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+
+#contentContainer{
+	height: 70%;
+    width: 80%;
+}

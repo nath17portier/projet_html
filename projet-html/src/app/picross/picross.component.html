@@ -1,6 +1,5 @@
 <div *ngIf="dataLoaded">
-	<button id="btnRetour" (click)="onRetourMenu()">Retour au menu</button>
-	<div id="container" class="flex flex-aic flex-center">
+	<div id="globalContainer" class="flex flex-aic flex-center">
 		<div id="picross_canvas" class="flex flex-col">
 			<div id="ligne1" class="flex">
 				<div id="zone_blanche"></div>
@@ -28,13 +27,19 @@
 </div>
 
 <div *ngIf="!dataLoaded">
-	<div>Choisissez un niveau de difficulté</div>
-	<button (click)="onLoadData(0)">Facile</button>
-	<button [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
-	<button [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile</button>
+	<div id="globalContainer" class="flex flex-aic flex-center flex-col">
+		<p>Choisissez un niveau de difficulté</p>
+		<div id="niveauContainer" class="flex flex-sa flex-aic">
+			<button class="btn-ui" (click)="onLoadData(0)">Facile</button>
+			<button class="btn-ui" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
+			<button class="btn-ui" [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile</button>
+		</div>
+	</div>
 </div>
 
 <div id="finNiveau" class="flex flex-sa flex-aic">
 	<p *ngIf="gameWon" id="paragFinNiveau">Felicitation, vous avez gagné !</p>
 	<button *ngIf="gameWon" id="btnFinNiveau" (click)="onRetourMenu()">Retour au menu</button>
 </div>
+
+<button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

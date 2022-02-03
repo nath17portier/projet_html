@@ -1,17 +1,19 @@
+<div id="globalContainer" class="flex flex-center flex-aic flex-col">
+  <div id="contentContainer" class="contentContainer flex flex-center flex-aic flex-col">
+    <form [formGroup]="UserForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-aic flex-center flex-col">
+      <div class="mb-3">
+        <label>Name</label>
+        <input type="text" formControlName="name" class="form-control" required>
+      </div>
+      <div class="flex flex-sa flex-aic item">
+        <label>Password</label>
+        <input type="password" formControlName="password" class="form-control" required>
+      </div>
+      <div class="flex flex-sa flex-aic item">
+        <button class="btn-ui" type="submit" [disabled]="!UserForm.valid">Se connecter</button>
+      </div>
+    </form>
 
-
-<form [formGroup]="UserForm" (ngSubmit)="onSubmit()" novalidate>
-  <div class="mb-3">
-    <label>Name</label>
-    <input type="text" formControlName="name" class="form-control" required>
+    <button class="btn-ui" routerLink="/inscription" routerLinkActive="active">Inscription</button>
   </div>
-  <div class="mb-3">
-    <label>Password</label>
-    <input type="password" formControlName="password" class="form-control" required>
-  </div>
-  <div class="mb-3">
-    <button type="submit" class="btn btn-primary" [disabled]="!UserForm.valid">Se connecter</button>
-  </div>
-</form>
-
-<button routerLink="/inscription" routerLinkActive="active">Inscription</button>
+</div>

@@ -22,10 +22,6 @@
 	border-left: 1px solid transparent;
 }
 
-#container{
-	height: 90vh;
-	width: 90vw;
-}
 
 /*.ligne{
 	height: 12vh;
@@ -50,6 +46,7 @@
 
 .case, .ligne_consigne, .colonne_consigne{
 	border:1px solid;
+	background-color: white; 
 }
 
 .number{
@@ -99,8 +96,8 @@
 	left: 25%;
 }
 
-#btnRetour{
-	position: absolute;
-	top: 10px;
-	left: 10px;
+
+
+#niveauContainer{
+	
 }

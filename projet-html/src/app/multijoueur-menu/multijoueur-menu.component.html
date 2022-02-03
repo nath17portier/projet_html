@@ -1,3 +1,8 @@
-<button [disabled]="!canUse" (click)="onGame1()">Jouer au jeu 1</button>
-<br/>
-<button [disabled]="!canUse" (click)="onGame2()">Jouer au jeu 2</button>
+<div id="globalContainer" class="flex flex-center flex-aic flex-col">
+	<div id="contentContainer" class="flex flex-sa flex-aic flex-col">
+		<div id="jeu-multi-container">
+			<button class="btn-ui" [disabled]="!canUse" (click)="onGame1()">Calcul mental VS</button>
+		</div>
+		<button class="btn-ui" routerLink="/main" routerLinkActive="active">Retour au menu principal</button>
+	</div>
+</div>
