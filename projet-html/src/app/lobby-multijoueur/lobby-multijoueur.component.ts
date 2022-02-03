@@ -16,15 +16,7 @@ export class LobbyMultijoueurComponent implements OnInit {
   constructor(private multijoueurService : MultijoueurService, private router: Router) { }
 
   ngOnInit(): void {
-      var multi = this.multijoueurService;
-
-      window.addEventListener("popstate", function(event){
-        var r = confirm("a");
-        if(r==true){
-          multi.undoMatch();
-        }
-      })
-      
+     
 
   	 this.sub = this.multijoueurService.getMatch().subscribe(
   		(m: any) =>{
