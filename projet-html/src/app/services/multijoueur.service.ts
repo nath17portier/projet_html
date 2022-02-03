@@ -91,6 +91,7 @@ export class MultijoueurService {
 	}
 
 	undoMatch(){
+		window.removeEventListener("popstate", function(event){});
 		this.mySocket.emit("undoJeu1", this.connexionService.getUser());
 	}
 }

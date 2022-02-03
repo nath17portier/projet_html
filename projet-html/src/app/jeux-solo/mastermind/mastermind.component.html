@@ -1,0 +1,40 @@
+<div>
+    <div *ngIf="!won && !lost">
+        <div class="flex">
+            <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color" (click)="putColor(color)"></div>
+        </div>
+        <form class="flex flex-row" [formGroup]="formCouleurs" (ngSubmit)="onSubmit()">
+            <div class="flex">
+                <div class="puce" *ngFor="let c of submittedCode;let i = index"  [ngClass]="c" (click)="removeColor(i)"></div>
+            </div>
+            <button type="submit" [disabled]="!formCouleurs.valid">Submit</button>
+        </form>
+    </div>
+    <div id="container" class="flex flex-center flex-aic">
+        <div class="flex flex-col flex-aifs colonne">
+            <div *ngFor="let code of listeTentatives">
+                <div class="flex">
+                    <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col flex-aifs flex-se colonne">
+            <div *ngFor="let result of listeResultats">
+                <div class="flex">
+                    <div class="puce" *ngFor="let r of result" [ngClass]="r"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="won">Bravo vous avez gagné!</div>
+    <div *ngIf="lost">Vous avez perdu..
+        <div>la réponse était:</div>
+        <div class="flex">
+            <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
+        </div>
+    </div>
+    <button *ngIf="won || lost" (click)="resetGame()">Rejouer</button>
+</div>
+
+<button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

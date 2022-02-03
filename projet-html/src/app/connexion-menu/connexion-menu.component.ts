@@ -32,6 +32,13 @@ export class ConnexionMenuComponent implements OnInit {
 		if(response){
 			this.router.navigate(['/main']);
 		}
+    else{
+      this.UserForm= this.formBuilder.group({
+	      name: [''],
+	      password: ['']
+	    }) ;
+      alert("Aucun compte correspondant à ces identifiants n'a été trouvé.");
+    }
 	});
   }
 

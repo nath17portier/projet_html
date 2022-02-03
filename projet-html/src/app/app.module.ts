@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -18,6 +19,7 @@ import { LobbyMultijoueurComponent } from './lobby-multijoueur/lobby-multijoueur
 import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
 import { PicrossComponent } from './picross/picross.component';
 import { AuthGuardService } from './services/authGuard.service';
+import { MastermindComponent } from './jeux-solo/mastermind/mastermind.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -27,6 +29,7 @@ const appRoutes: Routes = [
   {path: 'not-found' , component: FourOhFourComponent},
   {path: 'aventure' , canActivate: [AuthGuardService] , component: AventureMenuComponent},
   {path: 'aventure/picross' , canActivate: [AuthGuardService] , component: PicrossComponent},
+  {path: 'aventure/mastermind' , component: MastermindComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , canActivate: [AuthGuardService] , component: MultijoueurMenuComponent},
@@ -49,7 +52,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     MultijoueurMenuComponent,
     LobbyMultijoueurComponent,
     JeuMultiUnComponent,
-    PicrossComponent
+    PicrossComponent,
+    MastermindComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     RouterModule.forRoot(appRoutes),
     SocketIoModule.forRoot(socketConfig),
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

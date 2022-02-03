@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from '../services/localStorage.service';
 
 @Component({
   selector: 'app-aventure-menu',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AventureMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private localStorageService : LocalStorageService) { }
+
+  public lvl = this.localStorageService.get("lvlGeneral");
 
   ngOnInit(): void {
   }
