@@ -1,0 +1,21 @@
+<div id="globalContainer" class="flex flex-aic flex-center">
+  <div id="boutonContainer">
+    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onUp()">Haut</button>
+    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onDown()">Bas</button>
+    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onLeft()">Gauche</button>
+    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onRight()">Droite</button>
+  </div>
+  <div id="grille" class="flex flex-col">
+    <div *ngFor="let voiture of tabVoiture; let i = index" [id]="'voiture_'+i" class="voiture" 
+    [ngStyle]="{'width': voiture.orientation == 'H' ? voiture.taille*20-5+'vh' : 15+'vh', 
+                'height': voiture.orientation == 'V' ? voiture.taille*20-5+'vh' : 15+'vh',
+                'left': voiture.coordonnee[1]*20+'vh',
+                'top': voiture.coordonnee[0]*20+'vh'}"
+    (click)="onSelectionVoiture(i)">
+      
+    </div>
+    <div *ngFor="let item of [].constructor(4)" class = "ligne flex">
+      <div *ngFor="let item of [].constructor(4)" class="case"></div>
+    </div>
+  </div>
+</div>

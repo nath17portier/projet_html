@@ -1,0 +1,73 @@
+#globalContainer{
+  width: 100vw;
+  height: 100vh;
+}
+
+#boutonContainer{
+  position: absolute;
+  height: 60vh;
+  width: 20vw;
+  background-color: red;
+  left: 5vw;
+}
+
+body{
+  margin: 0px;
+}
+
+.ligne{
+
+}
+
+.case{
+  width: 20vh;
+  height: 20vh;
+  border: 1px solid black;
+}
+
+#grille{
+  position: relative;
+}
+
+.voiture{
+  position: absolute;
+  margin-top: 2.5vh;
+  margin-left: 2.5vh;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+#voiture_1{
+  background-color: red;
+  border: 3px solid black;
+}
+
+#voiture_2{
+  background-color: skyblue;
+  border: 3px solid black;
+}
+
+#voiture_3{
+  background-color: greenyellow;
+  border: 3px solid black;
+}
+
+#voiture_4{
+  background-color: lightgray;
+  border: 3px solid black;
+}
+
+#voiture_5{
+  background-color: hotpink;
+  border: 3px solid black;
+}
+
+#voiture_0{
+  background-color: rosybrown;
+  border: 3px solid black;
+}
+
+.selected{
+  border: 10px solid green !important;
+}
