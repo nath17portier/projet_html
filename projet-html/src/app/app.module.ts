@@ -20,6 +20,7 @@ import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
 import { PicrossComponent } from './picross/picross.component';
 import { AuthGuardService } from './services/authGuard.service';
 import { MastermindComponent } from './jeux-solo/mastermind/mastermind.component';
+import { RushHourComponent } from './rush-hour/rush-hour.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   {path: 'aventure' , canActivate: [AuthGuardService] , component: AventureMenuComponent},
   {path: 'aventure/picross' , canActivate: [AuthGuardService] , component: PicrossComponent},
   {path: 'aventure/mastermind' , component: MastermindComponent},
+  {path: 'aventure/rush-hour' , component: RushHourComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , canActivate: [AuthGuardService] , component: MultijoueurMenuComponent},
@@ -53,7 +55,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     LobbyMultijoueurComponent,
     JeuMultiUnComponent,
     PicrossComponent,
-    MastermindComponent
+    MastermindComponent,
+    RushHourComponent
   ],
   imports: [
     BrowserModule,
