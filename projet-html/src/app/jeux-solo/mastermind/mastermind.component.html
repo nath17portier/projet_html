@@ -1,40 +1,62 @@
-<div>
-    <div *ngIf="!won && !lost">
-        <div class="flex">
-            <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color" (click)="putColor(color)"></div>
-        </div>
-        <form class="flex flex-row" [formGroup]="formCouleurs" (ngSubmit)="onSubmit()">
+<div id="titre">Mastermind</div>
+<div id="globalContainer" class="flex flex-center">
+    <div id="contentContainer" class="flex  flex-col">
+        <div>
             <div class="flex">
-                <div class="puce" *ngFor="let c of submittedCode;let i = index"  [ngClass]="c" (click)="removeColor(i)"></div>
+                <div class="puce" *ngFor="let color of listeCouleurs" [ngClass]="color" (click)="putColor(color)"></div>
             </div>
-            <button type="submit" [disabled]="!formCouleurs.valid">Submit</button>
-        </form>
-    </div>
-    <div id="container" class="flex flex-center flex-aic">
-        <div class="flex flex-col flex-aifs colonne">
-            <div *ngFor="let code of listeTentatives">
+            <form id="formContainer" class="flex flex-row" [formGroup]="formCouleurs" (ngSubmit)="onSubmit()">
+                <div id="formCouleur" class="flex">
+                    <div class="puce" *ngFor="let c of submittedCode;let i = index" [ngClass]="c"
+                        (click)="removeColor(i)"></div>
+                </div>
+                <button class="submit" type="submit" [disabled]="!formCouleurs.valid || (won || lost)">Submit</button>
+            </form>
+        </div>
+        <div id="listesContainer" class="flex flex-center flex-aic">
+            <div id="tentativesContainer" class="flex flex-col flex-aifs colonne">
+                <div *ngFor="let code of listeTentatives">
+                    <div class="flex">
+                        <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="resultsContainer" class="flex flex-col flex-aifs flex-se colonne">
+                <div *ngFor="let result of listeResultats">
+                    <div class="flex">
+                        <div class="puce" *ngFor="let r of result" [ngClass]="r"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="endGame" class="flex flex-aic flex-center">
+            <div *ngIf="won">Bravo vous avez gagné!</div>
+            <div *ngIf="lost">Vous avez perdu..
+                <div>la réponse était:</div>
                 <div class="flex">
                     <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
                 </div>
             </div>
-        </div>
-        <div class="flex flex-col flex-aifs flex-se colonne">
-            <div *ngFor="let result of listeResultats">
-                <div class="flex">
-                    <div class="puce" *ngFor="let r of result" [ngClass]="r"></div>
-                </div>
-            </div>
+            <button class="submit" *ngIf="won || lost" (click)="resetGame()">Rejouer</button>
         </div>
     </div>
+</div>
 
-    <div *ngIf="won">Bravo vous avez gagné!</div>
-    <div *ngIf="lost">Vous avez perdu..
-        <div>la réponse était:</div>
-        <div class="flex">
-            <div class="puce" *ngFor="let color of code" [ngClass]="color"></div>
-        </div>
+<div id="legendContainer" class="flex flex-col">
+    <div>Légende</div>
+    <div class="ligneLegende flex flex-aic flex-sa">
+        <div class="puce None"></div>
+        <div class="legende">Il y a une puce ni de la bonne couleur, ni à la bonne place</div>
     </div>
-    <button *ngIf="won || lost" (click)="resetGame()">Rejouer</button>
+    <div class="ligneLegende flex flex-aic flex-sa">
+        <div class="puce ColorOkPlacePOk"></div>
+        <div class="legende">Il y a une puce de la bonne couleur, mais pas à la bonne place</div>
+    </div>
+    <div class="ligneLegende flex flex-aic flex-sa">
+        <div class="puce ColorOkPlaceOk"></div>
+        <div class="legende">Il y a une puce de la bonne couleur et à la bonne place</div>
+    </div>
 </div>
 
 <button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

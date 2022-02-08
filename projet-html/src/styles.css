@@ -1,4 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family:GillSansBold;
+    src: local('Gill Sans'), url(./assets/fonts/GILB____.TTF) format('truetype');
+}
+
+@font-face {
+    font-family:GillSansCond;
+    src: local('Gill Sans'), url(./assets/fonts/GILC____.TTF) format('truetype');
+}
+
+@font-face {
+    font-family:GillSans;
+    src: local('Gill Sans'), url(./assets/fonts/GIL_____.TTF) format('truetype');
+}
+
+html * {
+	font-family:GillSansBold;
+	font-weight: bolder;
+}
+
 .flex{
 	display: flex;
 }
@@ -41,20 +61,29 @@ body {
 	margin:0;
 }
 
+#titre {
+	font-size: xx-large;
+    color: white;
+    text-shadow: 2px 1px 0px #ff8106;
+    position: absolute;
+	top: 10px;
+    width: 100vw;
+    text-align: center;
+}
+
 #globalContainer{
 	height: 100vh;
 	width: 100vw;
 }
 
 .btn-ui{
-	height: 75px;
-    width: 225px;
+    height: calc(4vh + 4vw);
+    width: calc(11vh + 11vw);
     border-radius: 20px;
     border: 4px solid black;
     background-color: #4d4d4d;
     color: #FFB74D;
     font-size: calc(1.2vw + 1.2vh);
-    font-family: fantasy;
     transition: all 0.5s;
     margin: 15px; 
 }

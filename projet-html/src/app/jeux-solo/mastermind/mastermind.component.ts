@@ -139,47 +139,51 @@ export class MastermindComponent implements OnInit {
   }
 
   putColor(color: string): void {
-    switch (this.firstEmptyPuce) {
-      case 0:
-        this.formCouleurs.controls.couleur1.setValue(color);
-        break;
-      case 1:
-        this.formCouleurs.controls.couleur2.setValue(color);
-        break;
-      case 2:
-        this.formCouleurs.controls.couleur3.setValue(color);
-        break;
-      case 3:
-        this.formCouleurs.controls.couleur4.setValue(color);
-        break;
-      default:
-        break;
+    if (!this.won && !this.lost) {
+      switch (this.firstEmptyPuce) {
+        case 0:
+          this.formCouleurs.controls.couleur1.setValue(color);
+          break;
+        case 1:
+          this.formCouleurs.controls.couleur2.setValue(color);
+          break;
+        case 2:
+          this.formCouleurs.controls.couleur3.setValue(color);
+          break;
+        case 3:
+          this.formCouleurs.controls.couleur4.setValue(color);
+          break;
+        default:
+          break;
+      }
+      if (this.firstEmptyPuce < 4) {
+        this.submittedCode[this.firstEmptyPuce] = color;
+      }
+      this.updateFirstEmpty();
     }
-    if (this.firstEmptyPuce < 4) {
-      this.submittedCode[this.firstEmptyPuce] = color;
-    }
-    this.updateFirstEmpty();
   }
 
   removeColor(i: number): void {
-    switch (i) {
-      case 0:
-        this.formCouleurs.controls.couleur1.setValue(null);
-        break;
-      case 1:
-        this.formCouleurs.controls.couleur2.setValue(null);
-        break;
-      case 2:
-        this.formCouleurs.controls.couleur3.setValue(null);
-        break;
-      case 3:
-        this.formCouleurs.controls.couleur4.setValue(null);
-        break;
-      default:
-        break;
+    if (!this.won && !this.lost) {
+      switch (i) {
+        case 0:
+          this.formCouleurs.controls.couleur1.setValue(null);
+          break;
+        case 1:
+          this.formCouleurs.controls.couleur2.setValue(null);
+          break;
+        case 2:
+          this.formCouleurs.controls.couleur3.setValue(null);
+          break;
+        case 3:
+          this.formCouleurs.controls.couleur4.setValue(null);
+          break;
+        default:
+          break;
+      }
+      this.submittedCode[i] = "";
+      this.updateFirstEmpty();
     }
-    this.submittedCode[i] = "";
-    this.updateFirstEmpty();
   }
 
   updateFirstEmpty(): void {
