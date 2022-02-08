@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../services/localStorage.service';
 import { ConnexionService } from '../services/connexion.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rush-hour',
@@ -20,7 +21,7 @@ export class RushHourComponent implements OnInit {
   finDePartie:boolean = false;
   niveau:number = 3;
 
-  constructor(private localStorageService: LocalStorageService, private connexionService: ConnexionService) {
+  constructor(private localStorageService: LocalStorageService, private connexionService: ConnexionService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -195,5 +196,9 @@ export class RushHourComponent implements OnInit {
         this.connexionService.lvlUpGeneral(this.niveau);
       }
     }
+  }
+
+  onRetourMenu(){
+    this.router.navigate(['/aventure']);
   }
 }

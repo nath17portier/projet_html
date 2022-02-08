@@ -1,16 +1,18 @@
 <div id="globalContainer" class="flex flex-aic flex-center">
   <div id="boutonContainer">
-    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onUp()">Haut</button>
-    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onDown()">Bas</button>
-    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onLeft()">Gauche</button>
-    <button *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onRight()">Droite</button>
+    <div id="buttons">
+      <div id="boutonUp" class="bouton_fleche" *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onUp()"></div>
+      <div id="boutonDown" class="bouton_fleche" *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='V'" (click)="onDown()"></div>
+      <div id="boutonLeft" class="bouton_fleche" *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onLeft()"></div>
+      <div id="boutonRight" class="bouton_fleche" *ngIf="selectedCar != -1 && tabVoiture[selectedCar].orientation =='H'" (click)="onRight()"></div>
+    </div>
   </div>
   <div id="grille" class="flex flex-col">
     <div *ngFor="let voiture of tabVoiture; let i = index" [id]="'voiture_'+i" class="voiture" 
     [ngStyle]="{'width': voiture.orientation == 'H' ? voiture.taille*20-5+'vh' : 15+'vh', 
                 'height': voiture.orientation == 'V' ? voiture.taille*20-5+'vh' : 15+'vh',
-                'left': voiture.coordonnee[1]*20+'vh',
-                'top': voiture.coordonnee[0]*20+'vh'}"
+                'left': 'calc(' + voiture.coordonnee[1]*20+'vh + ' + voiture.coordonnee[1]*2 +'px)',
+                'top': 'calc(' + voiture.coordonnee[0]*20+'vh + ' + voiture.coordonnee[0]*2 +'px)'}"
     (click)="onSelectionVoiture(i)">
       
     </div>
@@ -19,3 +21,6 @@
     </div>
   </div>
 </div>
+
+<button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>
+

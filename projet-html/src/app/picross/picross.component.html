@@ -31,8 +31,8 @@
 		<p>Choisissez un niveau de difficulté</p>
 		<div id="niveauContainer" class="flex flex-sa flex-aic">
 			<button class="btn-ui" (click)="onLoadData(0)">Facile</button>
-			<button class="btn-ui" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
-			<button class="btn-ui" [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile</button>
+			<button [ngClass]="lvlMax<2 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
+			<button [ngClass]="lvlMax<3 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile</button>
 		</div>
 	</div>
 </div>

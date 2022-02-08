@@ -3,13 +3,7 @@
   height: 100vh;
 }
 
-#boutonContainer{
-  position: absolute;
-  height: 60vh;
-  width: 20vw;
-  background-color: red;
-  left: 5vw;
-}
+
 
 body{
   margin: 0px;
@@ -27,9 +21,12 @@ body{
 
 #grille{
   position: relative;
+  background-color: white;
 }
 
 .voiture{
+  background-color: grey;
+  border: 3px solid black;
   position: absolute;
   margin-top: 2.5vh;
   margin-left: 2.5vh;
@@ -38,36 +35,58 @@ body{
   transition: all 0.5s;
 }
 
-#voiture_1{
-  background-color: red;
-  border: 3px solid black;
-}
-
-#voiture_2{
-  background-color: skyblue;
-  border: 3px solid black;
-}
-
-#voiture_3{
-  background-color: greenyellow;
-  border: 3px solid black;
-}
-
-#voiture_4{
-  background-color: lightgray;
-  border: 3px solid black;
-}
-
-#voiture_5{
-  background-color: hotpink;
-  border: 3px solid black;
-}
-
 #voiture_0{
-  background-color: rosybrown;
+  background-color: darkorange;
   border: 3px solid black;
 }
 
 .selected{
-  border: 10px solid green !important;
+  background-color: red !important;
+}
+
+
+#buttons{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.bouton_fleche{
+  height: 8vw;
+  width: 8vw;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+}
+
+#boutonUp{
+  left: 6vw;
+  top: 1vw;
+  background-image: url('../images/up.png');
+}
+
+#boutonDown{
+  left: 6vw;
+  top: 11vw;
+  background-image: url('../images/down.png');
+}
+
+#boutonLeft{
+  left: 1vw;
+  top: 6vw;
+  background-image: url('../images/left.png');
+}
+
+#boutonRight{
+  left: 11vw;
+  top: 6vw;
+  background-image: url('../images/right.png');
+}
+
+#boutonContainer{
+  position: absolute;
+  height: 20vw;
+  width: 20vw;
+  left: 6vw;
 }

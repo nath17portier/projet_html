@@ -82,3 +82,25 @@ body {
 	height: 70%;
     width: 80%;
 }
+
+input{
+	height: calc(1.5vw + 1.5vh);
+	width: calc(8vw + 8vh);
+	margin-left: 15px;
+	border-radius: 10px;
+	border: 1px solid #AAA;
+	padding-left: 10px;
+}
+
+.btn-ui-disabled{
+	height: 75px;
+    width: 225px;
+    border-radius: 20px;
+    border: 4px solid black;
+    background-color: #4d4d4d;
+    color: grey;
+    font-size: calc(1.2vw + 1.2vh);
+    font-family: fantasy;
+    transition: all 0.5s;
+    margin: 15px; 
+}

@@ -2,3 +2,10 @@
 #btn-ui-container{
 	width: 80%;
 }
+
+.picto{
+	height: 30vh;
+	width: 30vh;
+	background-color: white;
+	border-radius: 100%;
+}

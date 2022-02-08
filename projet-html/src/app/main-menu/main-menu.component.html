@@ -1,9 +1,16 @@
 <div id="globalContainer" class="flex flex-center flex-aic">
 	<div id="contentContainer" class="flex flex-sa flex-aic flex-col">
 		<div id="btn-ui-container" class="flex flex-sa flex-aic">
-			<button class="btn-ui" routerLink="/aventure" routerLinkActive="active">Aventure</button>
-			<button class="btn-ui" routerLink="/multijoueur" routerLinkActive="active">Multijoueur</button>
+			<div class="flex flex-col flex-sa flex-aic">
+				<div class="picto"></div>
+				<button class="btn-ui" routerLink="/aventure" routerLinkActive="active">Aventure</button>
+			</div>
+			<div class="flex flex-col flex-sa flex-aic">
+				<div class="picto"></div>
+				<button class="btn-ui" routerLink="/multijoueur" routerLinkActive="active">Multijoueur</button>
+			</div>
+			
 		</div>
-		<button class="btn-ui" routerLink="/connexion" routerLinkActive="active" (click)="onDeconnexion()">Déconnexion</button>
+		<button id="btnRetour" class="btn-ui" routerLink="/connexion" routerLinkActive="active" (click)="onDeconnexion()">Déconnexion</button>
 	</div>
 </div>

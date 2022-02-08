@@ -4,8 +4,18 @@
 
 form{
 	height: 50%;
+	width: 20vw;
 }
 
 .item{
 	height: 20%;
+	width: 100%;
+}
+
+.label{
+	width: 30%;
+}
+
+.input{
+	width: 70%;
 }
