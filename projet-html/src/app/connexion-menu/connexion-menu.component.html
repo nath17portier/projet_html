@@ -1,16 +1,17 @@
 <div id="globalContainer" class="flex flex-center flex-aic flex-col">
   <div id="contentContainer" class="contentContainer flex flex-center flex-aic flex-col">
+    <h1 id="titre_principal">TITRE</h1>
     <form [formGroup]="UserForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-aic flex-center flex-col">
-      <div class="mb-3">
-        <label>Name</label>
-        <input type="text" formControlName="name" class="form-control" required>
+      <div class="flex flex-sa flex-aic item">
+        <label class="flex flex-fs label">Name</label>
+        <input type="text" formControlName="name" class="form-control flex flex-end input" required>
+      </div>
+      <div class="flex flex-sa flex-aic item ">
+        <label class="flex flex-fs label">Password</label>
+        <input type="password" formControlName="password" class="form-control flex flex-end input" required>
       </div>
       <div class="flex flex-sa flex-aic item">
-        <label>Password</label>
-        <input type="password" formControlName="password" class="form-control" required>
-      </div>
-      <div class="flex flex-sa flex-aic item">
-        <button class="btn-ui" type="submit" [disabled]="!UserForm.valid">Se connecter</button>
+        <button class="btn-ui" type="submit" [disabled]="!UserForm.valid">Connexion</button>
       </div>
     </form>
 

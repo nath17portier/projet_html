@@ -1,8 +1,9 @@
 <div id="globalContainer" class="flex flex-center flex-aic flex-col">
 	<div id="contentContainer" class="flex flex-sa flex-aic flex-col">
-		<div id="jeu-multi-container">
+		<div id="jeu-multi-container" class="flex flex-col flex-sa flex-aic">
+			<div class="picto"></div>
 			<button class="btn-ui" [disabled]="!canUse" (click)="onGame1()">Calcul mental VS</button>
 		</div>
-		<button class="btn-ui" routerLink="/main" routerLinkActive="active">Retour au menu principal</button>
+		<button id="btnRetour" class="btn-ui" routerLink="/main" routerLinkActive="active">Retour au menu principal</button>
 	</div>
 </div>

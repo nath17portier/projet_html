@@ -1,18 +1,25 @@
 <div id="globalContainer" class="flex flex-center flex-aic">
-	<div id="contentContainer" class="flex flex-sa flex-aic flex-col">
-		<div id="btn-ui-container" class="flex flex-sa flex-aic">
-			<button class="btn-ui" routerLink="/aventure/mastermind" routerLinkActive="active" [disabled]= "lvl<1">Mastermind</button>
+	<div id="contentContainer" class="flex flex-sa flex-aic ">
+		<div  class="flex flex-col flex-sa flex-aic">
+			<div class="picto"></div>
+			<button [ngClass]="lvl<1 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/mastermind" routerLinkActive="active" [disabled]= "lvl<1">Mastermind</button>
 		</div>
-		<div id="btn-ui-container" class="flex flex-sa flex-aic">
-			<button class="btn-ui" routerLink="/aventure/picross" routerLinkActive="active" [disabled]= "lvl<2">Picross</button>
+		<div  class="flex flex-col flex-sa flex-aic">
+			<div class="picto picto-picross">
+				<div *ngIf="lvl<2" class="cadenas"></div>
+			</div>
+			<button [ngClass]="lvl<2 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/picross" routerLinkActive="active" [disabled]= "lvl<2">Picross</button>
 		</div>
 		
-		<div id="btn-ui-container" class="flex flex-sa flex-aic">
-			<button class="btn-ui" routerLink="/aventure/rush-hour" routerLinkActive="active" [disabled]= "lvl<3">Rush-Hour</button>
+		<div  class="flex flex-col flex-sa flex-aic">
+			<div class="picto">
+				<div *ngIf="lvl<3" class="cadenas"></div>
+			</div>
+			<button [ngClass]="lvl<3 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/rush-hour" routerLinkActive="active" [disabled]= "lvl<3">Rush-Hour</button>
 		</div>
 		
 
-		<button class="btn-ui" routerLink="/main" routerLinkActive="active">Retour au menu principal</button>
+		<button id="btnRetour" class="btn-ui" routerLink="/main" routerLinkActive="active">Retour au menu principal</button>
 	</div>
 </div>
 

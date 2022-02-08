@@ -1,3 +1,5 @@
-<p *ngIf="!match">waiting for another player ...</p>
-<p *ngIf="match">Player found ! Teleporting to game soon :)</p>
-<button onbeforeunload="return onBeforeUnload()" class="btn-ui" id="btnRetour" (click)="onRetourMenu()">Retour au menu</button>
+<div id="globalContainer" class="flex flex-center flex-aic">
+	<p *ngIf="!match">En attente d'un autre joueur ...</p>
+	<p *ngIf="match">Adversaire trouvé ! Vous allez être téléporté vers la salle de jeu !</p>
+</div>
+<button class="btn-ui" id="btnRetour" (click)="onRetourMenu()">Retour au menu</button>

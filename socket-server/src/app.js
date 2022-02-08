@@ -223,17 +223,17 @@ function createAddition(){
 
 function createMultiplication(){
 	//entre 10 et 50
-	var a1 = Math.floor(Math.random() * 41)+10;
-	var a2 = Math.floor(Math.random() * 41)+10;
+	var a1 = Math.floor(Math.random() * 11)+10;
+	var a2 = Math.floor(Math.random() * 11)+10;
 	return { operation: a1+"x"+a2, 
 			 result : a1*a2 }
 }
 
 function createSoustraction(){
 	//entre 100 et 999
-	var a1 = Math.floor(Math.random() * 900)+100;
+	var a1 = Math.floor(Math.random() * 250)+50;
 	//entre 100 et a1
-	var a2 = Math.floor(Math.random() * (a1-99))+100;
+	var a2 = Math.floor(Math.random() * (a1-49))+50;
 	return { operation: a1+"-"+a2, 
 			 result : a1-a2 }
 }

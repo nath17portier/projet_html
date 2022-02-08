@@ -3,17 +3,16 @@
   <div id="contentContainer" class="contentContainer flex flex-center flex-aic flex-col">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()" novalidate class="flex flex-aic flex-center flex-col">
       <div class="flex flex-sa flex-aic item">
-        <label>Name</label>
-        <input type="text" formControlName="name" class="form-control" required>
+        <label class="flex flex-fs label">Name</label>
+        <input type="text" formControlName="name" class="form-control flex flex-end input" required>
       </div>
-
-      <div class="flex flex-sa flex-aic item">
-        <label>Password</label>
-        <input type="password" formControlName="password" class="form-control" required>
+      <div class="flex flex-sa flex-aic item ">
+        <label class="flex flex-fs label">Password</label>
+        <input type="password" formControlName="password" class="form-control flex flex-end input" required>
       </div>
 
       <div class="mb-3">
-        <button type="submit" class="btn-ui" [disabled]="!userForm.valid">Create</button>
+        <button type="submit" class="btn-ui" [disabled]="!userForm.valid">Créer mon compte</button>
       </div>
     </form>
   </div>
