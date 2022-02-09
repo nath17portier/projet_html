@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RushHourComponent implements OnInit {
 
-  parkingSpace:number[][] = [[0,2,2,2],[3,4,4,5],[0,0,6,5],[1,1,6,5]];
+  parkingSpace:number[][];
   tabVoiture:any[];
   dimension:number = 4;
   vehicleBeginPart:number[];
@@ -32,6 +32,7 @@ export class RushHourComponent implements OnInit {
                         {numero:5, taille:3, coordonnee:[1,3], orientation:"V"},
                         {numero:6, taille:2, coordonnee:[2,2], orientation:"V"}
                       ];
+    this.parkingSpace = [[0,2,2,2],[3,4,4,5],[0,0,6,5],[1,1,6,5]];
   }
 
   showTab(){
@@ -189,7 +190,6 @@ export class RushHourComponent implements OnInit {
   OnFinish(){
     this.firstPiece(this.selectedCar+1);
     if(this.vehicleBeginPart[0] == 3 && this.vehicleBeginPart[1] == 3){
-      console.log("Fin de la partie");
       this.finDePartie = true;
       this.selectedCar = -1;
       if(this.localStorageService.get("lvlGeneral")==this.niveau){
@@ -201,4 +201,17 @@ export class RushHourComponent implements OnInit {
   onRetourMenu(){
     this.router.navigate(['/aventure']);
   }
+
+  onReplay(){
+    this.finDePartie = false;
+    this.tabVoiture =  [{numero:1, taille:2, coordonnee:[3,0], orientation:"H"}, 
+                        {numero:2, taille:3, coordonnee:[0,1], orientation:"H"},
+                        {numero:3, taille:1, coordonnee:[1,0], orientation:"V"},
+                        {numero:4, taille:2, coordonnee:[1,1], orientation:"H"},
+                        {numero:5, taille:3, coordonnee:[1,3], orientation:"V"},
+                        {numero:6, taille:2, coordonnee:[2,2], orientation:"V"}
+                      ];
+  this.parkingSpace = [[0,2,2,2],[3,4,4,5],[0,0,6,5],[1,1,6,5]];
+  }
+  //faire un service pour niveaux random
 }

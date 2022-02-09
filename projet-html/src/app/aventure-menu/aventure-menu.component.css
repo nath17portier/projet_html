@@ -30,3 +30,12 @@
 .picto-picross{
 	background-image: url('../images/picross.png');
 }
+
+.picto-mastermind{
+	background-image: url('../images/mastermind.png');
+	background-position-x: 0px;
+}
+
+.picto-rush-hour{
+	background-image: url('../images/rush-hour.png');
+}

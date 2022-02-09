@@ -38,9 +38,9 @@
 	</div>
 </div>
 
-<div id="finNiveau" class="flex flex-sa flex-aic">
-	<p *ngIf="gameWon" id="paragFinNiveau" class="label">Felicitation, vous avez gagné !</p>
-	<button *ngIf="gameWon" id="btnFinNiveau" (click)="onReplay()" class="replay">Rejouer</button>
+<div id="finNiveau" *ngIf="gameWon" class="flex flex-sa flex-aic">
+	<p  id="paragFinNiveau" class="label">Felicitation, vous avez gagné !</p>
+	<button  id="btnFinNiveau" (click)="onReplay()" class="replay">Rejouer</button>
 </div>
 
 <button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

@@ -20,7 +20,13 @@
     <div *ngFor="let item of [].constructor(4)" class = "ligne flex">
       <div *ngFor="let item of [].constructor(4)" class="case"></div>
     </div>
+    <div id="drapeau"></div>
   </div>
+</div>
+
+<div id="finNiveau" *ngIf="finDePartie"class="flex flex-sa flex-aic flex-col">
+  <p  id="paragFinNiveau" class="label">Felicitation, vous avez gagné !</p>
+  <button id="btnFinNiveau" (click)="onReplay()" class="replay">Rejouer</button>
 </div>
 
 <button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

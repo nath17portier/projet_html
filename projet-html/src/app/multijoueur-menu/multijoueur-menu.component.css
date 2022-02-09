@@ -3,4 +3,11 @@
 	width: 30vh;
 	background-color: white;
 	border-radius: 100%;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.picto-calcul{
+	background-image: url('../images/calcVS.png');
 }
