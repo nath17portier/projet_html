@@ -29,7 +29,7 @@
 
 <div *ngIf="!dataLoaded">
 	<div id="globalContainer" class="flex flex-aic flex-center flex-col">
-		<p>Choisissez un niveau de difficulté</p>
+		<p class="label">Choisissez un niveau de difficulté</p>
 		<div id="niveauContainer" class="flex flex-sa flex-aic">
 			<button class="btn-ui" (click)="onLoadData(0)">Facile</button>
 			<button [ngClass]="lvlMax<2 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
@@ -39,8 +39,8 @@
 </div>
 
 <div id="finNiveau" class="flex flex-sa flex-aic">
-	<p *ngIf="gameWon" id="paragFinNiveau">Felicitation, vous avez gagné !</p>
-	<button *ngIf="gameWon" id="btnFinNiveau" (click)="onRetourMenu()">Retour au menu</button>
+	<p *ngIf="gameWon" id="paragFinNiveau" class="label">Felicitation, vous avez gagné !</p>
+	<button *ngIf="gameWon" id="btnFinNiveau" (click)="onReplay()" class="replay">Rejouer</button>
 </div>
 
 <button id="btnRetour" class="btn-ui" (click)="onRetourMenu()">Retour au menu</button>

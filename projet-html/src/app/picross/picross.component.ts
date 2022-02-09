@@ -128,8 +128,8 @@ export class PicrossComponent implements OnInit {
   	}
   	console.log(this.lvlMax,this.difficulte)
   	if(this.lvlMax==this.difficulte && this.lvlMax!=3){
-  		console.log("on a fait le lvl max");
-  		this.picrossService.lvlUpPicross(this.lvlMax)
+  		this.picrossService.lvlUpPicross(this.lvlMax);
+		this.lvlMax+=1;
   	}
   	if(this.localStorageService.get("lvlGeneral")==this.niveau){
   		this.connexionService.lvlUpGeneral(this.niveau);
@@ -190,6 +190,11 @@ export class PicrossComponent implements OnInit {
 
   onRetourMenu(){
   	this.router.navigate(['/aventure']);
+  }
+
+  onReplay(){
+	  this.dataLoaded = false;
+	  this.gameWon = false;
   }
 
 }

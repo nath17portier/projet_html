@@ -36,8 +36,6 @@ export class ConnexionService {
     var pass = usr.password;
 
     var passSafe = this.set("password", pass);
-
-    console.log(passSafe);
     
     this.socket.emit("connectRequest",name,passSafe);
     this.socket.on("connectResult",(response:boolean, lvlGeneral:number, lvlPicross:number, id:string)=>{
@@ -63,13 +61,11 @@ export class ConnexionService {
 
     //Création d'un user
   async createUser(user: any) {
-    console.log(user);
     var name = user.name;
     var pass = user.password;
 
     var passSafe = this.set("password", pass);
 
-    console.log(passSafe);
     return new Promise<any>((resolve, reject) => {
       this.socket.emit("inscription",name,passSafe);
       this.socket.on("inscriptionResult",(response:boolean)=>{

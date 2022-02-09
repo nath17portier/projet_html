@@ -27,12 +27,15 @@ export class InscriptionMenuComponent implements OnInit {
   onSubmit(){
   	this.connexionService.createUser(this.userForm.value).then((reponse:boolean)=>{
   		if(reponse){
-  			console.log("ca a marché");
   			this.router.navigate(['/connexion']); 
   		}
   		else{
-  			console.log("username deja utilisé");
-  		}
+        alert("Ce nom de compte est déjà utilisé.")
+        this.userForm = this.formBuilder.group({
+          name: [''],
+          password: [''],    
+        })   
+      }
   	});
     
   }

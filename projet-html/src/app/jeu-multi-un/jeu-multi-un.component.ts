@@ -36,7 +36,6 @@ export class JeuMultiUnComponent implements OnInit {
 	this.playerNames = this.multijoueurService.getPlayerNames();
 	this.tabOperations = this.multijoueurService.getTabOperations();
 
-	console.log(this.tabOperations);
 
 	if(this.playerNames[0]==this.connexionService.getUser()){
 		this.joueur1=true;
@@ -83,7 +82,6 @@ export class JeuMultiUnComponent implements OnInit {
   	this.winner = this.playerNames[joueur];
   	if(this.connexionService.getUser() == this.playerNames[joueur]){
   		this.wonGame = true;
-  		console.log("gagné");
   	}
   	setTimeout(()=>{
 		this.multijoueurService.endGame(this.roomId,this.wonGame,1);
@@ -94,8 +92,6 @@ export class JeuMultiUnComponent implements OnInit {
   updateResponse1(){
   	var input = (<HTMLInputElement>document.getElementById("input_joueur1"))!;
   	var resp = input.value
-  	console.log(resp);
-  	console.log(this.tabOperations[this.Score_Joueur_1].result);
   	if(resp==this.tabOperations[this.Score_Joueur_1].result){
   		this.onPlayer1Scored();
 
@@ -106,8 +102,6 @@ export class JeuMultiUnComponent implements OnInit {
   updateResponse2(){
   	var input = (<HTMLInputElement>document.getElementById("input_joueur2"))!;
   	var resp = input.value
-  	console.log(resp);
-  	console.log(this.tabOperations[this.Score_Joueur_2].result);
   	if(resp==this.tabOperations[this.Score_Joueur_2].result){
   		this.onPlayer2Scored();
   		

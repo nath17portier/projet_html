@@ -4,8 +4,8 @@
 		<div id="joueur1" class="flex flex-aic flex-center flex-col">
 			<p>Score de {{playerNames[0]}} : {{Score_Joueur_1}}</p>
 			<!-- <button [disabled]="!joueur1" (click)="onPlayer1Scored()">{{playerNames[0]}}</button> -->
-			<input  *ngIf="!joueur1" id="input_joueur1" type="number" (change)="updateResponse1()">
-			<p *ngIf="!joueur1">Insérez la réponse puis appuyez sur Entrée</p>
+			<input  *ngIf="joueur1" id="input_joueur1" type="number" (change)="updateResponse1()">
+			<p *ngIf="joueur1">Insérez la réponse puis appuyez sur Entrée</p>
 		</div>
 		<div id="colOperations" class="flex flex-aic flex-center flex-col" >
 			<div class="operation flex flex-aic flex-center" *ngFor="let op of tabOperations; let i=index">
@@ -17,8 +17,8 @@
 		<div id="joueur2" class="flex flex-aic flex-center flex-col">
 			<p>Score de {{playerNames[1]}} : {{Score_Joueur_2}}</p>
 			<!-- <button [disabled]="!joueur2" (click)="onPlayer2Scored()">{{playerNames[1]}}</button> -->
-			<input  *ngIf="!joueur2" id="input_joueur2" type="number" (change)="updateResponse2()">
-			<p *ngIf="!joueur2">Insérez la réponse puis appuyez sur Entrée</p>
+			<input  *ngIf="joueur2" id="input_joueur2" type="number" (change)="updateResponse2()">
+			<p *ngIf="joueur2">Insérez la réponse puis appuyez sur Entrée</p>
 		</div>
 	</div>
 	<div id="ecranFin" *ngIf="ecranFin">

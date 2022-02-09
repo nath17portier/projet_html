@@ -3,6 +3,28 @@
 	width: 80vh;
 }
 
+.replay{
+    height: 30px;
+    width: auto;
+    margin: 0px;
+    border: 1px solid black;
+    font-size: medium;
+    background-color: #4d4d4d;
+    border-radius: 20px;
+    color: #FFB74D;
+    transition: all 0.5s;
+}
+
+.replay:hover{
+    color: red;
+	transition: all 0.5s;
+	transform: scale(1.05);
+}
+
+.label {
+	color:white;
+}
+
 #ligne1{
 	height: 20vh;
 }

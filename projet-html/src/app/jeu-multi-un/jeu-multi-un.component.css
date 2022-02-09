@@ -1,12 +1,15 @@
 #ecranFin{
-	background-color: lightgray;
+	background-color: white;
+	border-radius: 15px;
 	position: absolute;
-
+	color:darkorange;
+	padding:1%;
 }
 
 #joueur1, #joueur2{
 	height: 100%;
 	width: 35%;
+	color: white;
 }
 
 #colOperations{
@@ -30,6 +33,7 @@
 .operationEnonce{
 	width: 40%;
 	height: 100%;
+	color:darkorange;
 }
 
 .trackerResultat{
