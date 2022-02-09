@@ -10,15 +10,15 @@
   </div>
   <div id="grille" class="flex flex-col">
     <div *ngFor="let voiture of tabVoiture; let i = index" [id]="'voiture_'+i" class="voiture" 
-    [ngStyle]="{'width': voiture.orientation == 'H' ? voiture.taille*20-5+'vh' : 15+'vh', 
-                'height': voiture.orientation == 'V' ? voiture.taille*20-5+'vh' : 15+'vh',
-                'left': 'calc(' + voiture.coordonnee[1]*20+'vh + ' + voiture.coordonnee[1]*2 +'px)',
-                'top': 'calc(' + voiture.coordonnee[0]*20+'vh + ' + voiture.coordonnee[0]*2 +'px)'}"
+    [ngStyle]="{'width': voiture.orientation == 'H' ? voiture.taille*12-3+'vh' : 9+'vh', 
+                'height': voiture.orientation == 'V' ? voiture.taille*12-3+'vh' : 9+'vh',
+                'left': 'calc(' + voiture.coordonnee[1]*12+'vh + ' + voiture.coordonnee[1]*2 +'px)',
+                'top': 'calc(' + voiture.coordonnee[0]*12+'vh + ' + voiture.coordonnee[0]*2 +'px)'}"
     (click)="onSelectionVoiture(i)">
       
     </div>
-    <div *ngFor="let item of [].constructor(4)" class = "ligne flex">
-      <div *ngFor="let item of [].constructor(4)" class="case"></div>
+    <div *ngFor="let item of [].constructor(6)" class = "ligne flex">
+      <div *ngFor="let item of [].constructor(6)" class="case"></div>
     </div>
     <div id="drapeau"></div>
   </div>

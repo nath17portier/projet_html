@@ -32,7 +32,6 @@ export class PicrossComponent implements OnInit {
 
   ngOnInit(): void {
   	this.lvlMax = this.localStorageService.get("lvlPicross");
-  	console.log(this.lvlMax);
   }
 
   onStateChange(i:number, j:number){
@@ -80,7 +79,6 @@ export class PicrossComponent implements OnInit {
   	var tab_chiffres = this.liste_etat_to_draw(ligne);
   	var ligne_a_modif = document.getElementById("ligne_"+ligne_i);
   	if(this.arrayEquals(tab_chiffres,this.lignes[ligne_i])){
-  		console.log("ligne OK");
   		
   		ligne_a_modif!.classList.add("termine");
   	}
@@ -97,7 +95,6 @@ export class PicrossComponent implements OnInit {
   	var tab_chiffres = this.liste_etat_to_draw(colonne);
   	var colonne_a_modif = document.getElementById("colonne_"+colonne_j);
   	if(this.arrayEquals(tab_chiffres,this.colonnes[colonne_j])){
-  		console.log("colonne OK");
   		colonne_a_modif!.classList.add("termine");
   	}
   	else{
@@ -126,7 +123,6 @@ export class PicrossComponent implements OnInit {
 
   		}
   	}
-  	console.log(this.lvlMax,this.difficulte)
   	if(this.lvlMax==this.difficulte && this.lvlMax!=3){
   		this.picrossService.lvlUpPicross(this.lvlMax);
 		this.lvlMax+=1;

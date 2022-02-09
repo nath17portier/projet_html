@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from '../services/localStorage.service';
 import { ConnexionService } from '../services/connexion.service';
 import { Router } from '@angular/router';
+import { RushHourService } from '../services/rush-hour.service';
 
 @Component({
   selector: 'app-rush-hour',
@@ -12,7 +13,7 @@ export class RushHourComponent implements OnInit {
 
   parkingSpace:number[][];
   tabVoiture:any[];
-  dimension:number = 4;
+  dimension:number = 6;
   vehicleBeginPart:number[];
   vehicleEndPart:number[];
   caseToGo:number[];
@@ -21,18 +22,16 @@ export class RushHourComponent implements OnInit {
   finDePartie:boolean = false;
   niveau:number = 3;
 
-  constructor(private localStorageService: LocalStorageService, private connexionService: ConnexionService, private router: Router) {
+  constructor(private localStorageService: LocalStorageService, private connexionService: ConnexionService, private router: Router, private rushHourService: RushHourService) {
   }
 
   ngOnInit(): void {
-    this.tabVoiture =  [{numero:1, taille:2, coordonnee:[3,0], orientation:"H"}, 
-                        {numero:2, taille:3, coordonnee:[0,1], orientation:"H"},
-                        {numero:3, taille:1, coordonnee:[1,0], orientation:"V"},
-                        {numero:4, taille:2, coordonnee:[1,1], orientation:"H"},
-                        {numero:5, taille:3, coordonnee:[1,3], orientation:"V"},
-                        {numero:6, taille:2, coordonnee:[2,2], orientation:"V"}
-                      ];
-    this.parkingSpace = [[0,2,2,2],[3,4,4,5],[0,0,6,5],[1,1,6,5]];
+
+    var level = this.rushHourService.getRushHourLevel();
+
+    this.tabVoiture =  level.tabVoiture;
+
+    this.parkingSpace = level.parkingSpace;
   }
 
   showTab(){
@@ -156,7 +155,7 @@ export class RushHourComponent implements OnInit {
     if (movementPlace[0] == -1 || movementPlace[1] == -1) {
       return false;
     }
-    return (movementPlace[0] < this.dimension && movementPlace[1] < this.dimension && this.parkingSpace[movementPlace[0]][movementPlace[1]] == 0) || (this.selectedCar == 0 && movementPlace[0] == 3 && movementPlace[1] == 4);
+    return (movementPlace[0] < this.dimension && movementPlace[1] < this.dimension && this.parkingSpace[movementPlace[0]][movementPlace[1]] == 0) || (this.selectedCar == 0 && movementPlace[0] == 2 && movementPlace[1] == 6);
   }
 
   onSelectionVoiture(i:number){
@@ -188,8 +187,8 @@ export class RushHourComponent implements OnInit {
   }
 
   OnFinish(){
-    this.firstPiece(this.selectedCar+1);
-    if(this.vehicleBeginPart[0] == 3 && this.vehicleBeginPart[1] == 3){
+    //this.firstPiece(this.selectedCar+1);
+    if(this.selectedCar == 0 && this.tabVoiture[0].coordonnee[0]==2 && this.tabVoiture[0].coordonnee[1]==5 ){
       this.finDePartie = true;
       this.selectedCar = -1;
       if(this.localStorageService.get("lvlGeneral")==this.niveau){
@@ -204,14 +203,11 @@ export class RushHourComponent implements OnInit {
 
   onReplay(){
     this.finDePartie = false;
-    this.tabVoiture =  [{numero:1, taille:2, coordonnee:[3,0], orientation:"H"}, 
-                        {numero:2, taille:3, coordonnee:[0,1], orientation:"H"},
-                        {numero:3, taille:1, coordonnee:[1,0], orientation:"V"},
-                        {numero:4, taille:2, coordonnee:[1,1], orientation:"H"},
-                        {numero:5, taille:3, coordonnee:[1,3], orientation:"V"},
-                        {numero:6, taille:2, coordonnee:[2,2], orientation:"V"}
-                      ];
-  this.parkingSpace = [[0,2,2,2],[3,4,4,5],[0,0,6,5],[1,1,6,5]];
+    var level = this.rushHourService.getRushHourLevel();
+
+    this.tabVoiture =  level.tabVoiture;
+
+    this.parkingSpace = level.parkingSpace;
   }
   //faire un service pour niveaux random
 }
