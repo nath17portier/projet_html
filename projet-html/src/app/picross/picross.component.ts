@@ -28,6 +28,10 @@ export class PicrossComponent implements OnInit {
 
   niveau:number = 2;
 
+  toolTipLvl2 = false;
+
+  toolTipLvl3 = false;
+
   constructor(private connexionService : ConnexionService,private picrossService: PicrossService, private router: Router, private localStorageService : LocalStorageService) { }
 
   ngOnInit(): void {
@@ -191,6 +195,23 @@ export class PicrossComponent implements OnInit {
   onReplay(){
 	  this.dataLoaded = false;
 	  this.gameWon = false;
+  }
+
+
+  onTooltipLvl2(){
+    this.toolTipLvl2 = true;
+  }
+
+  outTooltipLvl2(){
+    this.toolTipLvl2 = false;
+  }
+
+  onTooltipLvl3(){
+    this.toolTipLvl3 = true;
+  }
+
+  outTooltipLvl3(){
+    this.toolTipLvl3 = false;
   }
 
 }

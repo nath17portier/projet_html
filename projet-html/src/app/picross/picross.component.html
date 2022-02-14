@@ -32,8 +32,12 @@
 		<p class="label">Choisissez un niveau de difficulté</p>
 		<div id="niveauContainer" class="flex flex-sa flex-aic">
 			<button class="btn-ui" (click)="onLoadData(0)">Facile</button>
-			<button [ngClass]="lvlMax<2 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen</button>
-			<button [ngClass]="lvlMax<3 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile</button>
+			<div (mouseenter)="onTooltipLvl2()" (mouseleave)="outTooltipLvl2()"><button [ngClass]="lvlMax<2 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<2" (click)="onLoadData(1)">Moyen
+				<div *ngIf="lvlMax<2 && toolTipLvl2" class="tooltip">Réussisez encore un niveau facile de picross pour débloquer ce jeu.</div>
+			</button></div>
+			<div (mouseenter)="onTooltipLvl3()" (mouseleave)="outTooltipLvl3()"><button [ngClass]="lvlMax<3 ? 'btn-ui-disabled' : 'btn-ui'" [disabled]="lvlMax<3" (click)="onLoadData(2)">Difficile
+				<div *ngIf="lvlMax<3 && toolTipLvl3" class="tooltip">Réussisez encore un niveau moyen de picross pour débloquer ce jeu.</div>
+			</button></div>
 		</div>
 	</div>
 </div>

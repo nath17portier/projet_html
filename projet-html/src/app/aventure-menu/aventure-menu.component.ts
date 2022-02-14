@@ -8,11 +8,31 @@ import { LocalStorageService } from '../services/localStorage.service';
 })
 export class AventureMenuComponent implements OnInit {
 
+  displayTooltipRushHour:boolean = false;
+  displayTooltipPicross:boolean = false;
+
   constructor(private localStorageService : LocalStorageService) { }
 
   public lvl = this.localStorageService.get("lvlGeneral");
 
   ngOnInit(): void {
   }
+
+  onPicross(){
+  	this.displayTooltipPicross = true;
+  }
+
+  outPicross(){
+  	this.displayTooltipPicross = false;
+  }
+
+  onRushHour(){
+  	this.displayTooltipRushHour = true;
+  }
+
+  outRushHour(){
+  	this.displayTooltipRushHour = false;
+  }
+
 
 }

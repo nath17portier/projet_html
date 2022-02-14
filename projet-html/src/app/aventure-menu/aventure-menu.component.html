@@ -7,16 +7,21 @@
 		</div>
 		<div  class="flex flex-col flex-sa flex-aic">
 			<div class="picto picto-picross">
-				<div *ngIf="lvl<2" class="cadenas"></div>
+				<div *ngIf="lvl<2" class="cadenas">
+				</div>
 			</div>
-			<button [ngClass]="lvl<2 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/picross" routerLinkActive="active" [disabled]= "lvl<2">Picross</button>
+			<div (mouseenter)="onPicross()" (mouseleave)="outPicross()"><button [ngClass]="lvl<2 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/picross" routerLinkActive="active" [disabled]= "lvl<2">Picross
+				<div *ngIf="lvl<2 && displayTooltipPicross" class="tooltip">Réussisez encore un niveau de mastermind pour débloquer ce jeu.</div>
+			</button></div> 
 		</div>
 		
 		<div  class="flex flex-col flex-sa flex-aic">
 			<div class="picto picto-rush-hour">
 				<div *ngIf="lvl<3" class="cadenas"></div>
 			</div>
-			<button [ngClass]="lvl<3 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/rush-hour" routerLinkActive="active" [disabled]= "lvl<3">Rush-Hour</button>
+			<div (mouseenter)="onRushHour()" (mouseleave)="outRushHour()"><button [ngClass]="lvl<3 ? 'btn-ui-disabled' : 'btn-ui'" routerLink="/aventure/rush-hour" routerLinkActive="active" [disabled]= "lvl<3">Rush-Hour
+				<div *ngIf="lvl<3 && displayTooltipRushHour" class="tooltip">Réussisez encore un niveau de picross pour débloquer ce jeu.</div>
+			</button></div> 
 		</div>
 		
 

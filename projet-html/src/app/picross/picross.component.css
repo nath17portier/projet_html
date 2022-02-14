@@ -118,3 +118,18 @@
 	left: 25%;
 }
 
+.btn-ui-disabled{
+	position: relative;
+}
+
+.tooltip{
+	position: absolute;
+    top: 110%;
+    width: 79%;
+    font-size: calc(0.8vw + 0.8vh);
+    background: white;
+    color: darkorange;
+    padding: 9%;
+    border-radius: 7px;
+    font-family: 'GillSans';
+}
