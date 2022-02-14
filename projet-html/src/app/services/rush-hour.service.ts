@@ -10,7 +10,7 @@ import { LocalStorageService } from '../services/localStorage.service';
 export class RushHourService {
 
 
-	tabLevels = [{tabVoiture: [	{ taille:2, coordonnee:[2,1], orientation:"H"}, 
+	tabLevels:any = [{tabVoiture: [	{ taille:2, coordonnee:[2,1], orientation:"H"}, 
 		                        { taille:2, coordonnee:[0,0], orientation:"H"},
 		                        { taille:3, coordonnee:[1,0], orientation:"V"},
 		                        { taille:2, coordonnee:[4,0], orientation:"V"},

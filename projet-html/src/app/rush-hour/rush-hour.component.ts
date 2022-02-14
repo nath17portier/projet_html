@@ -29,9 +29,13 @@ export class RushHourComponent implements OnInit {
 
     var level = this.rushHourService.getRushHourLevel();
 
-    this.tabVoiture =  level.tabVoiture;
+    console.log(level.tabVoiture);
 
-    this.parkingSpace = level.parkingSpace;
+    console.log(this.clone(level.tabVoiture));
+
+    this.tabVoiture = this.clone(level.tabVoiture);
+    this.parkingSpace =this.clone(level.parkingSpace);
+    
   }
 
   showTab(){
@@ -202,12 +206,29 @@ export class RushHourComponent implements OnInit {
   }
 
   onReplay(){
+    
+
     this.finDePartie = false;
+
     var level = this.rushHourService.getRushHourLevel();
 
-    this.tabVoiture =  level.tabVoiture;
+    console.log(level.tabVoiture);
 
-    this.parkingSpace = level.parkingSpace;
+    console.log(this.clone(level.tabVoiture));
+
+    this.tabVoiture = this.clone(level.tabVoiture);
+    this.parkingSpace =this.clone(level.parkingSpace);
+
+    
+  }
+
+  clone(obj:any){
+    try{
+      var copy = JSON.parse(JSON.stringify(obj));
+    } catch(ex){
+      alert(ex);
+    }
+    return copy;
   }
   //faire un service pour niveaux random
 }

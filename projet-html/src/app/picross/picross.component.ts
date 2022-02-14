@@ -167,16 +167,16 @@ export class PicrossComponent implements OnInit {
   	this.difficulte = difficulte+1;
   	switch (difficulte) {
   		case 0:
-  			var data = this.picrossService.getPicrossLVL1();
+  			var data = this.clone(this.picrossService.getPicrossLVL1());
   			break;
   		case 1:
-  			var data = this.picrossService.getPicrossLVL2();
+  			var data = this.clone(this.picrossService.getPicrossLVL2());
   			break;
   		case 2:
-  			var data = this.picrossService.getPicrossLVL3();
+  			var data = this.clone(this.picrossService.getPicrossLVL3());
   			break;	
   		default:
-  			var data = this.picrossService.getPicrossLVL1();
+  			var data = this.clone(this.picrossService.getPicrossLVL1());
   			break;
   	}
 
@@ -212,6 +212,15 @@ export class PicrossComponent implements OnInit {
 
   outTooltipLvl3(){
     this.toolTipLvl3 = false;
+  }
+
+  clone(obj:any){
+    try{
+      var copy = JSON.parse(JSON.stringify(obj));
+    } catch(ex){
+      alert(ex);
+    }
+    return copy;
   }
 
 }
