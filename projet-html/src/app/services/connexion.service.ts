@@ -28,6 +28,12 @@ export class ConnexionService {
     return this.localStorageService.get('isAuth');
   }
 
+  getLvl(){
+    return this.localStorageService.get('lvlGeneral');
+  }
+
+
+
   //todo : hash le mdp avant de le recuperer
   async signIn(usr:any){
     return new Promise(

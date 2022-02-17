@@ -19,6 +19,8 @@ import { LobbyMultijoueurComponent } from './lobby-multijoueur/lobby-multijoueur
 import { JeuMultiUnComponent } from './jeu-multi-un/jeu-multi-un.component';
 import { PicrossComponent } from './picross/picross.component';
 import { AuthGuardService } from './services/authGuard.service';
+import { PicrossGuardService } from './services/picrossGuard.service';
+import { RushHourGuardService } from './services/RushHourGuard.service';
 import { MastermindComponent } from './jeux-solo/mastermind/mastermind.component';
 import { RushHourComponent } from './rush-hour/rush-hour.component';
 
@@ -29,9 +31,9 @@ const appRoutes: Routes = [
   {path: 'main' , canActivate: [AuthGuardService] , component: MainMenuComponent},
   {path: 'not-found' , component: FourOhFourComponent},
   {path: 'aventure' , canActivate: [AuthGuardService] , component: AventureMenuComponent},
-  {path: 'aventure/picross' , canActivate: [AuthGuardService] , component: PicrossComponent},
-  {path: 'aventure/mastermind' , component: MastermindComponent},
-  {path: 'aventure/rush-hour' , component: RushHourComponent},
+  {path: 'aventure/picross' , canActivate: [AuthGuardService, PicrossGuardService] , component: PicrossComponent},
+  {path: 'aventure/mastermind', canActivate: [AuthGuardService] , component: MastermindComponent},
+  {path: 'aventure/rush-hour', canActivate: [AuthGuardService, RushHourGuardService] , component: RushHourComponent},
   {path: 'connexion' , component: ConnexionMenuComponent},
   {path: 'inscription' , component: InscriptionMenuComponent},
   {path: 'multijoueur' , canActivate: [AuthGuardService] , component: MultijoueurMenuComponent},
