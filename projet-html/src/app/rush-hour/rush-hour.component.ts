@@ -29,9 +29,6 @@ export class RushHourComponent implements OnInit {
 
     var level = this.rushHourService.getRushHourLevel();
 
-    console.log(level.tabVoiture);
-
-    console.log(this.clone(level.tabVoiture));
 
     this.tabVoiture = this.clone(level.tabVoiture);
     this.parkingSpace =this.clone(level.parkingSpace);
@@ -212,9 +209,6 @@ export class RushHourComponent implements OnInit {
 
     var level = this.rushHourService.getRushHourLevel();
 
-    console.log(level.tabVoiture);
-
-    console.log(this.clone(level.tabVoiture));
 
     this.tabVoiture = this.clone(level.tabVoiture);
     this.parkingSpace =this.clone(level.parkingSpace);

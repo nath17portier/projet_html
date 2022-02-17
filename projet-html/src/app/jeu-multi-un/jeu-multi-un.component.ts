@@ -77,7 +77,6 @@ export class JeuMultiUnComponent implements OnInit {
   }
 
   finDePartie(joueur:number){
-  	console.log(this.roomId);
   	this.ecranFin = true;
   	this.winner = this.playerNames[joueur];
   	if(this.connexionService.getUser() == this.playerNames[joueur]){

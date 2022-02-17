@@ -22,7 +22,6 @@ export class ConnexionMenuComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    console.log(this.connexionService.getAuth());
   }
 
 
