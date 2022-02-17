@@ -19,7 +19,7 @@ io.on("connection", socket => {
 
 
   socket.on("jeu1", (playerName) =>{
-	  	console.log("Jeu 1");
+	  	//console.log("Jeu 1");
 	  	if(jeu1.length!=0){
 			if(jeu1[jeu1.length-1].players.length<capaciteJeu1){
 				var roomId = addToExistingRoom(jeu1,socket.id, playerName);
@@ -54,13 +54,13 @@ io.on("connection", socket => {
   socket.on("undoJeu1", (playerPseudo) =>{
   		if (jeu1[jeu1.length-1].playerNames.includes(playerPseudo)) {
   			jeu1.splice(jeu1.length-1,1);
-	  		console.log(jeu1);
+	  		//console.log(jeu1);
   		}
 	  	
 	  })
 
   socket.on("jeu2", () =>{
-	  	console.log("Jeu 2");
+	  	//console.log("Jeu 2");
 	  	socket.emit("AddedToGame2");
 	  })
 
@@ -71,17 +71,17 @@ io.on("connection", socket => {
 	  })
 
   socket.on("player2Scored", (roomId)=>{
-	  	console.log("player 2 scored");
+	  	//console.log("player 2 scored");
 	  	io.sockets.in(roomId).emit("player2Scored", roomId);
 	  })
 
   socket.on("endGame1", (roomId)=>{
-	    console.log("##################")
+	    //console.log("##################")
 	    removeGameRoom(roomId,jeu1);
 	})
 
   socket.on("connectRequest", (name, pass) => {
-	  	console.log(name,pass);
+	  	//console.log(name,pass);
 	  	MongoClient.connect(url, function(err, db) {
 		  if (err) throw err;
 		  const dbo = db.db("mydb");
@@ -102,23 +102,23 @@ io.on("connection", socket => {
 	  });
 
   socket.on("inscription", (name, pass) => {
-	  	console.log(name, pass);
+	  	//console.log(name, pass);
 	  	MongoClient.connect(url, function(err, db) {
 		  if (err) throw err;
 		  const dbo = db.db("mydb");
 		  dbo.collection("users").find({name:name}).toArray(function(err, result) {
 		    if (err) throw err;
-		    console.log(result);
+		    //console.log(result);
 		    if(result.length==0){
 		    	dbo.collection("users").insertOne({name:name,password:pass, lvlGeneral:1, lvlPicross:1, id : uuidv4()},function(err,res){
 		    		if (err) throw err;
-		    		console.log("user inséré");
+		    		//console.log("user inséré");
 		    		socket.emit("inscriptionResult", true);
 		    	})
 		    }
 		    else{
 		    	socket.emit("inscriptionResult", false);
-		    	console.log("nom deja utilisé");
+		    	//console.log("nom deja utilisé");
 		    }
 		    //db.close();
 		  });
@@ -135,7 +135,7 @@ io.on("connection", socket => {
 		}
   	}
 	
-	console.log(jeu1);
+	//console.log(jeu1);
   })
 
   socket.on("leaveRoom", (roomId) =>{
@@ -172,13 +172,13 @@ function createNewRoom(jeu, socketId, roomId, playerName ){
 				players : [socketId],
 				playerNames : [playerName]
 			});
-	console.log(jeu);
+	//console.log(jeu);
 }
 
 function addToExistingRoom(jeu, socketId, playerName){
 	jeu[jeu.length-1].players.push(socketId);
 	jeu[jeu.length-1].playerNames.push(playerName);
-	console.log(jeu);
+	//console.log(jeu);
 	return(jeu[jeu.length-1].id)
 }
 
