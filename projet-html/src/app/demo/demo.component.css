@@ -1,0 +1,25 @@
+.video_pres{
+	margin-bottom: 60px;
+	margin-top: 10px;
+}
+
+.image_pres{
+	margin-bottom: 50px;
+	margin-top: 50px;
+	height: 750px;
+	width: 1200px;
+}
+
+#fond_demo{
+	background: #ffd1a4;
+}
+
+h1{
+	color: darkorange;
+	font-size: xx-large;
+}
+
+source{
+	height: 100%;
+	width: 100%;
+}

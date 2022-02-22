@@ -89,11 +89,11 @@ io.on("connection", socket => {
 		    if (err) throw err;
 		    if(result.length==1){
 		    	socket.emit("connectResult", true, result[0].lvlGeneral, result[0].lvlPicross, result[0].id);
-		    	console.log("connection accepted");
+		    	//console.log("connection accepted");
 		    }
 		    else{
 		    	socket.emit("connectResult", false);
-		    	console.log("connection refused");
+		    	//console.log("connection refused");
 		    }
 		    //db.close();
 		  });
@@ -128,7 +128,7 @@ io.on("connection", socket => {
 	  })
 
   socket.on("disconnecting",()=>{
-  	console.log(socket.id);
+  	//console.log(socket.id);
   	if (jeu1[jeu1.length-1] != undefined) {
   		if(jeu1[jeu1.length-1].players.length == 1 && jeu1[jeu1.length-1].players[0] == socket.id){
 			jeu1.splice(jeu1.length-1,1)

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -23,6 +23,7 @@ import { PicrossGuardService } from './services/picrossGuard.service';
 import { RushHourGuardService } from './services/RushHourGuard.service';
 import { MastermindComponent } from './jeux-solo/mastermind/mastermind.component';
 import { RushHourComponent } from './rush-hour/rush-hour.component';
+import { DemoComponent } from './demo/demo.component';
 
 
 //Chemins d'accès connus par le routeur Angular
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
   {path: 'multijoueur' , canActivate: [AuthGuardService] , component: MultijoueurMenuComponent},
   {path: 'multijoueur-lobby' , canActivate: [AuthGuardService] , component: LobbyMultijoueurComponent},
   {path: 'multijeu1' , canActivate: [AuthGuardService] , component: JeuMultiUnComponent},
+  {path: 'demo' , component: DemoComponent},
   {path: '' , component: ConnexionMenuComponent},
   {path: '**' , redirectTo: '/not-found'}
 ]
@@ -58,7 +60,8 @@ const socketConfig: SocketIoConfig = { url: 'http://localhost:3080', options: {}
     JeuMultiUnComponent,
     PicrossComponent,
     MastermindComponent,
-    RushHourComponent
+    RushHourComponent,
+    DemoComponent
   ],
   imports: [
     BrowserModule,
